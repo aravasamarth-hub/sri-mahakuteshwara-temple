@@ -35,7 +35,7 @@
 .temple-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--background) 82%, transparent); backdrop-filter: blur(18px); }
 .header-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .65; }
 .temple-logo { display: flex; align-items: center; gap: .7rem; color: var(--text); text-decoration: none; min-width: 210px; }
-.temple-logo-mark { display: inline-flex; align-items: center; justify-content: center; width: 41px; height: 41px; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); background: color-mix(in srgb, var(--gold) 11%, transparent); }
+.temple-logo-mark { display: inline-flex; align-items: center; justify-content: center; width: 41px; height: 41px; flex: 0 0 auto; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); background: color-mix(in srgb, var(--gold) 11%, transparent); box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--gold) 7%, transparent); }.temple-logo-mark svg { width: 27px; height: 27px; filter: drop-shadow(0 2px 3px color-mix(in srgb, var(--gold) 22%, transparent)); }
 .temple-logo strong { display: block; font-family: "Lora Variable", serif; font-size: .88rem; line-height: 1.2; }
 .temple-logo small { display: block; margin-top: .2rem; color: var(--muted); font-size: .6rem; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
 .nav-link { position: relative; display: inline-flex; align-items: center; padding: .5rem .55rem; color: var(--muted); font-size: .68rem; font-weight: 500; text-decoration: none; letter-spacing: .01em; }
