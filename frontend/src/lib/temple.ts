@@ -25,7 +25,6 @@ export type Pooja = {
   id: string;
   kn: string;
   en: string;
-  price: string;
   descriptionEn: string;
   descriptionKn: string;
 };
@@ -35,7 +34,6 @@ export const poojas: Pooja[] = [
     id: "rudra-abisheka",
     kn: "ರುದ್ರಾಭಿಷೇಕ",
     en: "Rudra Abisheka",
-    price: "₹ 501",
     descriptionEn: "A sacred bathing ceremony with holy waters, milk, honey and Sri Rudram chanting.",
     descriptionKn: "ಪವಿತ್ರ ತೀರ್ಥ, ಹಾಲು, ಜೇನುತುಪ್ಪ ಮತ್ತು ಶ್ರೀ ರುದ್ರಂ ಪಠಣದೊಂದಿಗೆ ನೆರವೇರುವ ಅಭಿಷೇಕ.",
   },
@@ -43,7 +41,6 @@ export const poojas: Pooja[] = [
     id: "ekadasha-rudrabisheka",
     kn: "ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ",
     en: "Ekadasha Rudra Abisheka",
-    price: "₹ 2,501",
     descriptionEn: "Eleven recitations of Sri Rudram offered for peace, health and prosperity.",
     descriptionKn: "ಶಾಂತಿ, ಆರೋಗ್ಯ ಮತ್ತು ಸಮೃದ್ಧಿಗಾಗಿ ಹನ್ನೊಂದು ಬಾರಿ ಶ್ರೀ ರುದ್ರಂ ಜಪದೊಂದಿಗೆ ಮಹಾ ಪೂಜೆ.",
   },
@@ -51,7 +48,6 @@ export const poojas: Pooja[] = [
     id: "ekavara-abisheka",
     kn: "ಏಕವಾರ ರುದ್ರಾಭಿಷೇಕ",
     en: "Ekavara Abisheka",
-    price: "₹ 351",
     descriptionEn: "A focused single-cycle abishekam for personal wellness and spiritual harmony.",
     descriptionKn: "ವೈಯಕ್ತಿಕ ಯೋಗಕ್ಷೇಮ ಹಾಗೂ ಆಧ್ಯಾತ್ಮಿಕ ನೆಮ್ಮದಿಗಾಗಿ ನಡೆಸುವ ಏಕವಾರ ಪವಿತ್ರ ಸೇವೆ.",
   },
@@ -59,7 +55,6 @@ export const poojas: Pooja[] = [
     id: "panchamrutha-abisheka",
     kn: "ಪಂಚಾಮೃತ ಅಭಿಷೇಕ",
     en: "Panchamrutha Abisheka",
-    price: "₹ 1,001",
     descriptionEn: "A special ritual using five sacred nectars: milk, curd, ghee, honey and sugar.",
     descriptionKn: "ಹಾಲು, ಮೊಸರು, ತುಪ್ಪ, ಜೇನುತುಪ್ಪ ಮತ್ತು ಸಕ್ಕರೆಯ ಪಂಚಾಮೃತಗಳಿಂದ ಸಲ್ಲಿಸುವ ವಿಶೇಷ ಅಭಿಷೇಕ.",
   },
