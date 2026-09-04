@@ -1,7 +1,7 @@
 # Mahakaleshwar Temple, Badami
 
 ## Product
-Frontend-only bilingual temple website with English-first content, Kannada toggle, React-state day/night theme, placeholder devotional audio control, responsive navigation, and static inquiry forms.
+Frontend-only bilingual temple website with English-first content, Kannada toggle, React-state day/night theme, uploaded devotional audio control, responsive navigation, and static inquiry forms. Light mode uses the uploaded yellow mandala pattern as a soft background; night mode uses the uploaded red textile pattern.
 
 ## Key flows
 - Visitors can browse Home, About, Timings, Poojas, Donations, Rooms, Marriage Halls, and Contact routes.

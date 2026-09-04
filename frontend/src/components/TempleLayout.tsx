@@ -87,7 +87,7 @@ function TempleFooter() {
 
 function TempleFrame() {
   const { theme } = useTemple();
-  return <div className={`temple-app ${theme === "night" ? "night" : ""}`} data-testid="temple-app"><TempleHeader /><main data-testid="page-content"><Outlet /></main><TempleFooter /><div className="audio-status" data-testid="audio-status"><Music2 size={14} /><span>{useTemple().audioOn ? "Music on" : "Music muted"}</span></div></div>;
+  return <div className={`temple-app ${theme === "night" ? "night" : "day"}`} data-testid="temple-app"><TempleHeader /><main data-testid="page-content"><Outlet /></main><TempleFooter /><div className="audio-status" data-testid="audio-status"><Music2 size={14} /><span>{useTemple().audioOn ? "Music on" : "Music muted"}</span></div></div>;
 }
 
 export default function TempleLayout() {
