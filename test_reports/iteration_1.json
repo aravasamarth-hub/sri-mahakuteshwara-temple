@@ -1,0 +1,18 @@
+{
+  "iteration": 1,
+  "passed": 9,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {"criterion":"Responsive temple shell and controls","name":"responsive-temple-shell","lane":"browser","status":"passed","evidence":"Desktop and 390px mobile verified shared shell, navigation/menu, bilingual toggle, theme toggle, audio control, and footer."},
+    {"criterion":"All requested routes are reachable","name":"all-routes-render","lane":"browser","status":"passed","evidence":"About, Timings, Poojas, Hundi/Donations, Rooms, Halls, and Contact rendered with shared header/footer via SPA navigation."},
+    {"criterion":"Pooja booking flow","name":"booking-creates-pooja","lane":"browser","status":"passed","evidence":"Four pooja cards visible; required validation shown; valid name/phone/date produced booking confirmation."},
+    {"criterion":"Donation flow","name":"donation-submission","lane":"browser","status":"passed","evidence":"Four donation categories visible; required validation shown; valid donor/phone/amount produced confirmation without payment navigation."},
+    {"criterion":"Rooms and halls enquiries","name":"rooms-and-halls-enquiries","lane":"browser","status":"passed","evidence":"Five room facilities, gallery, both hall cards/capacity images, and room plus both hall enquiry modals verified."},
+    {"criterion":"Contact flow","name":"contact-sends-enquiry","lane":"browser","status":"passed","evidence":"Placeholder contact details/map visible; empty form validated; valid name/phone/message produced success confirmation."},
+    {"criterion":"Language and theme state","name":"language-and-theme-toggle","lane":"browser","status":"passed","evidence":"Language changed hero/footer copy to Kannada; theme toggle added and removed night palette class in-session."},
+    {"criterion":"Static-only behavior","name":"static-only-behavior","lane":"browser","status":"passed","evidence":"Placeholder audio and map verified; forms complete in frontend confirmation states; no payment/login/backend dead-end encountered."}
+  ]
+}

@@ -1,0 +1,12 @@
+import { useState } from "react";
+import { ArrowRight, Check, Droplets, ShowerHead, Sparkles } from "lucide-react";
+import { templeImages } from "@/lib/temple";
+import { useTemple } from "@/components/TempleLayout";
+import InquiryDialog from "@/components/InquiryDialog";
+
+export default function Rooms() {
+  const { copy, language } = useTemple();
+  const [open, setOpen] = useState(false);
+  const facilities = [{ icon: Sparkles, text: copy.facilities[0] }, { icon: Sparkles, text: copy.facilities[1] }, { icon: ShowerHead, text: copy.facilities[2] }, { icon: Droplets, text: copy.facilities[3] }, { icon: Check, text: copy.facilities[4] }];
+  return <div data-testid="rooms-page"><section className="page-hero compact" data-testid="rooms-hero"><div className="container-wide"><p className="eyebrow">{language === "en" ? "Pilgrim stay" : "ಭಕ್ತರ ವಸತಿ"}</p><h1 className="page-title" data-testid="rooms-title">{copy.roomsTitle}</h1><p className="page-lede">{copy.roomsIntro}</p></div></section><section className="section-pad bg-[var(--surface)]" data-testid="rooms-content"><div className="container-wide grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]"><div className="gallery-grid" data-testid="room-gallery"><img className="gallery-main" src={templeImages.water} alt="Temple water courtyard" data-testid="room-image-main" /><img src={templeImages.carving} alt="Temple stone detail" data-testid="room-image-detail" /><img src={templeImages.gateway} alt="Temple gateway" data-testid="room-image-gateway" /></div><div><p className="eyebrow">{language === "en" ? "Stay with ease" : "ನೆಮ್ಮದಿಯ ವಾಸ"}</p><h2 className="section-title">{language === "en" ? "Everything you need, nothing you don't" : "ಬೇಕಾದ ಎಲ್ಲವೂ, ಅನಗತ್ಯವಾದುದೇನೂ ಇಲ್ಲ"}</h2><div className="facility-list">{facilities.map(({ icon: Icon, text }) => <div className="facility-row" key={text} data-testid={`room-facility-${text.slice(0, 10).toLowerCase().replaceAll(" ", "-")}`}><span><Icon size={16} /></span><p>{text}</p></div>)}</div><button className="button-gold mt-8" onClick={() => setOpen(true)} data-testid="room-enquire-btn">{copy.enquireRoom}<ArrowRight size={16} /></button></div></div></section>{open && <InquiryDialog kind="room" itemTitle={copy.enquireRoom} itemSubtitle={copy.roomsIntro} onClose={() => setOpen(false)} />}</div>;
+}

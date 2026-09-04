@@ -1,0 +1,203 @@
+{
+  "project_title": "Mahakaleshwar Temple, Badami - Devotional Web Platform",
+  "app_type": "hybrid_fullstack",
+  "archetype": "ORGANIC & EARTHY / SOUTH INDIAN TRADITIONAL TEMPLE HERITAGE",
+  "theme": {
+    "day_mode": {
+      "background": "#FFFDF7",
+      "surface": "#FDF6E3",
+      "card": "#FFFFFF",
+      "card_border": "#E2D3B4",
+      "text_primary": "#3B1E12",
+      "text_secondary": "#6B4423",
+      "primary_gold": "#D97706",
+      "primary_gold_hover": "#B45309",
+      "accent_maroon": "#881337",
+      "accent_maroon_hover": "#4C0519",
+      "sacred_vermilion": "#DC2626",
+      "sandalwood_bg": "#F5EBE0"
+    },
+    "night_mode": {
+      "background": "#12080A",
+      "surface": "#1F0E13",
+      "card": "#2A141A",
+      "card_border": "#4A2B1D",
+      "text_primary": "#FDE8D0",
+      "text_secondary": "#D4A373",
+      "primary_gold": "#F59E0B",
+      "primary_gold_hover": "#FBBF24",
+      "accent_maroon": "#9F1239",
+      "accent_maroon_hover": "#BE123C",
+      "sacred_vermilion": "#EF4444",
+      "sandalwood_bg": "#281712"
+    }
+  },
+  "typography": {
+    "heading_font": "Lora, serif (or Playfair Display)",
+    "body_font": "Poppins, sans-serif / DM Sans",
+    "kannada_font": "Noto Sans Kannada / system-ui, sans-serif",
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-serif font-medium",
+      "h4": "text-lg sm:text-xl font-sans font-medium",
+      "body": "text-base leading-relaxed font-sans",
+      "caption": "text-sm text-muted-foreground"
+    }
+  },
+  "media_assets": {
+    "temple_hero": "https://images.unsplash.com/photo-1554554497-0095c34db3ec?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB0ZW1wbGUlMjBhcmNoaXRlY3R1cmUlMjBnb2xkZW4lMjBtYXJvb24lMjBoZXJpdGFnZSUyMGJhZGFtaXxlbnwwfHx8fDE3ODg1NDUzNTR8MA&ixlib=rb-4.1.0&q=85",
+    "temple_gateway": "https://images.unsplash.com/photo-1665003815164-8f5bc853ef44?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwyfHxpbmRpYW4lMjB0ZW1wbGUlMjBhcmNoaXRlY3R1cmUlMjBnb2xkZW4lMjBtYXJvb24lMjBoZXJpdGFnZSUyMGJhZGFtaXxlbnwwfHx8fDE3ODg1NDUzNTR8MA&ixlib=rb-4.1.0&q=85",
+    "pooja_diya": "https://images.pexels.com/photos/33360798/pexels-photo-33360798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "pooja_brass_lamp": "https://images.pexels.com/photos/20302339/pexels-photo-20302339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "marriage_hall": "https://images.unsplash.com/photo-1730620016222-6b4a33ef8da1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHx0cmFkaXRpb25hbCUyMHdlZGRpbmclMjBoYWxsJTIwcm9vbSUyMGxvZGdlJTIwc3RheSUyMGludGVyaW9yfGVufDB8fHx8MTc4ODU0NTM1NHww&ixlib=rb-4.1.0&q=85",
+    "guest_room": "https://images.unsplash.com/photo-1623615141086-a3536f690604?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwzfHx0cmFkaXRpb25hbCUyMHdlZGRpbmclMjBoYWxsJTIwcm9vbSUyMGxvZGdlJTIwc3RheSUyMGludGVyaW9yfGVufDB8fHx8MTc4ODU0NTM1NHww&ixlib=rb-4.1.0&q=85",
+    "annadhana_food": "https://images.unsplash.com/photo-1738902334459-df6d6efc2f6c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHw0fHxpbmRpYW4lMjB0ZW1wbGUlMjBhcmNoaXRlY3R1cmUlMjBnb2xkZW4lMjBtYXJvb24lMjBoZXJpdGFnZSUyMGJhZGFtaXxlbnwwfHx8fDE3ODg1NDUzNTR8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "layout_and_structure": {
+    "header": {
+      "style": "Sticky top-0 z-50 backdrop-blur-md transition-colors duration-300",
+      "elements": [
+        "Temple Gopuram Logo + Bilingual Title",
+        "Desktop Navigation Links (Home, About, Timings, Poojas, Donations, Rooms, Marriage Halls, Contact)",
+        "Language Switcher (EN / KN)",
+        "Day/Night Theme Switcher (Sun/Moon icon)",
+        "Devotional Music Mute/Unmute Floating Button with Equalizer animation",
+        "Mobile Hamburger Menu Sheet"
+      ]
+    },
+    "hero_section": {
+      "style": "Relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-amber-500/20",
+      "content": "Warm golden gradient overlay over ancient stone temple architecture, bilingual hero title, sacred chant subtitle, quick CTA buttons (Book Pooja, Online Hundi), live darshan timing badge."
+    },
+    "pooja_section": {
+      "cards": [
+        {
+          "id": "rudra-abisheka",
+          "kannada": "ರುದ್ರಾಭಿಷೇಕ",
+          "english": "Rudra Abisheka",
+          "price": "₹ 501",
+          "description_en": "Sacred bathing ceremony of Lord Mahakaleshwar Lingam with sacred waters, milk, honey, and chanting of Sri Rudram.",
+          "description_kn": "ಶ್ರೀ ರುದ್ರಂ ಮಂತ್ರಗಳೊಂದಿಗೆ ಮಹಾಕಾಳೇಶ್ವರ ಲಿಂಗಕ್ಕೆ ಹಾಲು, ಜೇನುತುಪ್ಪ ಮತ್ತು ತೀರ್ಥದಿಂದ ನೆರವೇರಿಸುವ ಪವಿತ್ರ ಅಭಿಷೇಕ."
+        },
+        {
+          "id": "ekadasha-rudrabisheka",
+          "kannada": "ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ",
+          "english": "Ekadasha Rudra Abisheka",
+          "price": "₹ 2,501",
+          "description_en": "Grand eleven-times recitation of Sri Rudram for peace, health, prosperity, and removal of severe doshas.",
+          "description_kn": "ಶಾಂತಿ, ಆರೋಗ್ಯ, ಸಮೃದ್ಧಿ ಮತ್ತು ಶಾಪ ದೋಷಗಳ ನಿವಾರಣೆಗಾಗಿ 11 ಬಾರಿ ಶ್ರೀ ರುದ್ರಂ ಜಪದೊಂದಿಗೆ ಮಹಾ ಪೂಜೆ."
+        },
+        {
+          "id": "ekavara-abisheka",
+          "kannada": "ಏಕವಾರ ರುದ್ರಾಭಿಷೇಕ",
+          "english": "Ekavara Abisheka",
+          "price": "₹ 351",
+          "description_en": "Single cycle ritual abishekam for personal wellness and spiritual harmony.",
+          "description_kn": "ವ್ಯಕ್ತಿಗತ ಯೋಗಕ್ಷೇಮ ಹಾಗೂ ಆಧ್ಯಾತ್ಮಿಕ ನೆಮ್ಮದಿಗಾಗಿ ನಡೆಸುವ ಏಕವಾರ ಪವಿತ್ರ ಸ್ನಾನ ಸೇವೆ."
+        },
+        {
+          "id": "panchamrutha-abisheka",
+          "kannada": "ಪಂಚಾಮೃತ ಅಭಿಷೇಕ",
+          "english": "Panchamrutha Abisheka",
+          "price": "₹ 1,001",
+          "description_en": "Holy bath ceremony using five sacred nectars: Milk, Curd, Ghee, Honey, and Sugar/Fruit juices.",
+          "description_kn": "ಹಾಲು, ಮೊಸರು, ತುಪ್ಪ, ಜೇನುತುಪ್ಪ ಮತ್ತು ಸಕ್ಕರೆ/ಹಣ್ಣಿನ ರಸ ಸೇರಿದಂತೆ ಪಂಚಾಮೃತಗಳಿಂದ ಸಲ್ಲಿಸುವ ವಿಶೇಷ ಅಭಿಷೇಕ."
+        }
+      ]
+    },
+    "donations_section": {
+      "categories": [
+        {
+          "id": "temple-dev",
+          "name_en": "Temple Development",
+          "name_kn": "ದೇವಾಲಯ ಅಭಿವೃದ್ಧಿ",
+          "desc_en": "Contribute to ancient heritage temple preservation, stone carvings restoration, and campus expansion.",
+          "desc_kn": "ಪುರಾತನ ದೇವಾಲಯದ ಜೀರ್ಣೋದ್ಧಾರ, ಕಲ್ಲಿನ ಕೆತ್ತನೆಗಳ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಆವರಣದ ಅಭಿವೃದ್ಧಿಗೆ ಕಾಣಿಕೆ."
+        },
+        {
+          "id": "society-welfare",
+          "name_en": "Society Welfare",
+          "name_kn": "ಸಮಾಜ ಕಲ್ಯಾಣ",
+          "desc_en": "Support healthcare camps, local community education, and social uplifting programs in Badami region.",
+          "desc_kn": "ಬಾದಾಮಿ ಪ್ರದೇಶದ ಬಡಬಗ್ಗರಿಗೆ ವೈದ್ಯಕೀಯ ಶಿಬಿರ, ಶಿಕ್ಷಣ ಮತ್ತು ಸಮಾಜಮುಖಿ ಸೇವಾ ಯೋಜನೆಗಳಿಗೆ ನೆರವು."
+        },
+        {
+          "id": "annadhana",
+          "name_en": "Annadhana (Food Seva)",
+          "name_kn": "ಅನ್ನದಾನ ಸೇವೆ",
+          "desc_en": "Provide nutritious free meals (Prasadam) daily to thousands of visiting devotees and pilgrims.",
+          "desc_kn": "ಪ್ರತಿದಿನ ಆಗಮಿಸುವ ಸಾವಿರಾರು ಭಕ್ತಾದಿಗಳಿಗೆ ನೈವೇದ್ಯ ಮತ್ತು ಉಚಿತ ಮಹಾ ಪ್ರಸಾದ ವಿತರಣೆ."
+        },
+        {
+          "id": "trust-donation",
+          "name_en": "Trust Donation",
+          "name_kn": "ಟ್ರಸ್ಟ್ ದೇಣಿಗೆ",
+          "desc_en": "General charitable donation to Sri Mahakaleshwar Temple Religious & Charitable Trust.",
+          "desc_kn": "ಶ್ರೀ ಮಹಾಕಾಳೇಶ್ವರ ಧಾರ್ಮಿಕ ಮತ್ತು ದತ್ತಿ ಟ್ರಸ್ಟ್‌ನ ಸಾಮಾನ್ಯ ಧಾರ್ಮಿಕ ಚಟುವಟಿಕೆಗಳಿಗೆ ನಿಧಿ."
+        }
+      ]
+    },
+    "rooms_section": {
+      "facilities": [
+        "Bed, bedsheet, pillow provided",
+        "Clean Non-AC rooms",
+        "Attached bathroom with hot & cold water",
+        "24/7 Purified drinking water",
+        "24/7 Temple pilgrim service available"
+      ]
+    },
+    "marriage_halls_section": {
+      "halls": [
+        {
+          "id": "large-hall",
+          "name_en": "Large Kalyan Mantapa (ಸಭಾಂಗಣ)",
+          "name_kn": "ಬೃಹತ್ ಕಲ್ಯಾಣ ಮಂಟಪ",
+          "capacity": "1,000+ Guests",
+          "features": ["Spacious Dining Hall", "Stage Setup & Lighting", "Green Rooms for Bride & Groom", "Dedicated Kitchen & Parking"]
+        },
+        {
+          "id": "medium-hall",
+          "name_en": "Medium Function Hall",
+          "name_kn": "ಮಧ್ಯಮ ಸಭಾಂಗಣ",
+          "capacity": "300 - 500 Guests",
+          "features": ["Airy Traditional Hall", "Attached Dining Space", "Dressing Rooms", "Ideal for Seemantha, Upanayana & Engagements"]
+        }
+      ]
+    }
+  },
+  "visual_enhancers": {
+    "borders": "Temple mandapa arch patterns, subtle gold foil borders (`border-amber-500/30`), kumkum/sandalwood accent bars.",
+    "decorations": "Brass Diya flame glowing indicators, Trishul icons, sacred rangoli pattern overlays, soft gold shimmer effects.",
+    "audio": "Continuous devotional audio player with pulse ring animation, volume toggle, status badge."
+  },
+  "testing_requirements": {
+    "data_testids": [
+      "navbar-logo",
+      "language-toggle-btn",
+      "theme-toggle-btn",
+      "audio-toggle-btn",
+      "pooja-book-btn-rudra-abisheka",
+      "pooja-book-btn-ekadasha-rudrabisheka",
+      "pooja-book-btn-ekavara-abisheka",
+      "pooja-book-btn-panchamrutha-abisheka",
+      "donation-donate-btn-temple-dev",
+      "donation-donate-btn-annadhana",
+      "room-enquire-btn",
+      "hall-enquire-btn-large-hall",
+      "hall-enquire-btn-medium-hall",
+      "contact-form-submit-btn",
+      "booking-modal-submit-btn",
+      "donation-modal-submit-btn"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "1. Implement state-based persistent Light/Dark theme switch (warm temple gold/cream vs deep maroon/navy).",
+    "2. Implement state-based EN/KN language switch that immediately changes all UI text across every section.",
+    "3. Implement audio tag player with soft devotional music and persistent mute/unmute control.",
+    "4. Add functional dialog modals for Pooja Booking, Donations, Room Booking, Hall Enquiries, and Contact Form.",
+    "5. Ensure forms validate required fields and display clear success feedback banners ('Booking submitted, we will contact you shortly').",
+    "6. Apply traditional South Indian architectural flourishes: warm gold accents, lotus & diya motifs, rich borders, clean typography.",
+    "7. Attach all required data-testid attributes to buttons, inputs, toggles, and modals for automated testing."
+  ]
+}
