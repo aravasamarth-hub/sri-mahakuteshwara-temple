@@ -1,7 +1,7 @@
 import { createContext, useContext, useRef, useState, type PropsWithChildren } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { AudioLines, Landmark, Menu, Moon, Music2, Sun } from "lucide-react";
-import { ui, navItems, type Copy, type Language, type Theme } from "@/lib/temple";
+import { devotionalAudioUrl, ui, navItems, type Copy, type Language, type Theme } from "@/lib/temple";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 type TempleContextValue = { language: Language; theme: Theme; copy: Copy; toggleLanguage: () => void; toggleTheme: () => void; audioOn: boolean; toggleAudio: () => void };
@@ -31,7 +31,7 @@ function TempleProvider({ children }: PropsWithChildren) {
 
   return (
     <TempleContext.Provider value={{ language, theme, copy: ui[language], toggleLanguage: () => setLanguage((current) => current === "en" ? "kn" : "en"), toggleTheme: () => setTheme((current) => current === "day" ? "night" : "day"), audioOn, toggleAudio }}>
-      <audio ref={audioRef} loop muted aria-label="Placeholder devotional music" data-testid="devotional-audio" />
+      <audio ref={audioRef} src={devotionalAudioUrl} autoPlay loop muted={!audioOn} preload="auto" aria-label="Devotional music" data-testid="devotional-audio" />
       {children}
     </TempleContext.Provider>
   );

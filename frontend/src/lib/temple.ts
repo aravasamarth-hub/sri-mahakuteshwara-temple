@@ -1,5 +1,6 @@
 export type Language = "en" | "kn";
 export type Theme = "day" | "night";
+export const devotionalAudioUrl = "https://customer-assets-4nw71qhi.emergentagent.net/job_mahakal-badami/artifacts/exdh3h2u_whatsapp-image-2026-09-03-at-17.56.09-GJHllNsIGmGkq38E.mp3.mpeg";
 
 export const templeImages = {
   hero: "https://customer-assets-39nsmqrw.emergentagent.net/job_ab19e64e-071e-455d-ba2e-4200cd877bf1/artifacts/3b4uf6yk_file_00000000512071f6ac2e0755aa79c566.png",
@@ -121,7 +122,7 @@ export const ui = {
     email: "temple@example.com",
     sendMessage: "Send enquiry",
     footerLine: "A place of prayer, heritage and service.",
-    placeholder: "Placeholder audio · replace with temple recording",
+    placeholder: "Devotional music · tap to listen",
     liveDarshan: "Darshan open",
     selectPooja: "Selected seva",
     optional: "optional",
@@ -183,7 +184,7 @@ export const ui = {
     email: "temple@example.com",
     sendMessage: "ವಿಚಾರಣೆ ಕಳುಹಿಸಿ",
     footerLine: "ಪ್ರಾರ್ಥನೆ, ಪರಂಪರೆ ಮತ್ತು ಸೇವೆಯ ತಾಣ.",
-    placeholder: "ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್ ಆಡಿಯೋ · ದೇವಾಲಯದ ಧ್ವನಿಮುದ್ರಣದಿಂದ ಬದಲಿಸಿ",
+    placeholder: "ಭಕ್ತಿಗೀತೆ · ಕೇಳಲು ಟ್ಯಾಪ್ ಮಾಡಿ",
     liveDarshan: "ದರ್ಶನ ತೆರೆದಿದೆ",
     selectPooja: "ಆಯ್ಕೆ ಮಾಡಿದ ಸೇವೆ",
     optional: "ಐಚ್ಛಿಕ",
