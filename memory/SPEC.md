@@ -1,7 +1,7 @@
 # Mahakaleshwar Temple, Badami
 
 ## Product
-Frontend-only bilingual temple website with English-first content, Kannada toggle, React-state day/night theme, uploaded devotional audio control, responsive navigation, and static inquiry forms. Its reusable CSS/SVG heritage system has four purpose-built assets: 1920×1080 day/night desktop ornaments and 1080×2340 day/night mobile ornaments. Day mode uses Chalukya sandstone parchment, low-opacity mandalas, engraved corner vines, lotus borders, temple and Pushkarini line art; night mode recolors the same visual language in charcoal, bronze and metallic gold.
+Frontend-only bilingual temple website with English-first content, Kannada toggle, React-state day/night theme, uploaded devotional audio control, responsive navigation, and static inquiry forms. Its reusable Royal Chalukya ornament system is three vector masks in `frontend/public/ornaments/` (`corner-mandala.svg`, tiling `vine-edge.svg`, tiling `lotus-border.svg`) painted by a shared `::before` layer on `.section-pad`, `.page-hero`, `.hero-section` and `.temple-footer` via CSS `mask-image`. Colour and opacity come from `--ornament-ink` / `--ornament-opacity` (day #D4B06A at 25%, night #D4AF37 at 21%, footer gold at 22%); scale comes from `--orn-corner`, `--orn-vine`, `--orn-lotus` (clamped for desktop, reduced under 760px). Quarter mandalas sit in every section corner, vines run the left/right edges, lotus borders run top/bottom, and the centre stays clean for content.
 
 ## Key flows
 - Visitors can browse Home, About, Timings, Poojas, Donations, Rooms, Marriage Halls, and Contact routes.

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <path id="lp" d="M0-6C5-9 8-14 0-20C-8-14-5-9 0-6Z" fill="#000" fill-opacity=".5" stroke-width="1"/>
+    <g id="medallion">
+      <circle r="22" stroke-width="1.6"/>
+      <circle r="17" stroke-width=".8"/>
+      <use href="#lp"/><use href="#lp" transform="rotate(45)"/><use href="#lp" transform="rotate(90)"/><use href="#lp" transform="rotate(135)"/><use href="#lp" transform="rotate(180)"/><use href="#lp" transform="rotate(225)"/><use href="#lp" transform="rotate(270)"/><use href="#lp" transform="rotate(315)"/>
+      <circle r="4" fill="#000" stroke="none"/>
+    </g>
+    <g id="diamond">
+      <path d="M0-8L8 0 0 8-8 0Z" fill="#000" fill-opacity=".35" stroke-width="1.2"/>
+      <path d="M-16 0H-10M10 0H16" stroke-width="1"/>
+    </g>
+    <g id="scroll">
+      <path d="M-40 0C-28-18-12-18 0 0S28 18 40 0"/>
+      <path d="M-40 0C-28 18-12 18 0 0S28-18 40 0"/>
+      <circle cx="-20" r="2.5" fill="#000" stroke="none"/>
+      <circle cx="20" r="2.5" fill="#000" stroke="none"/>
+      <path d="M0 0C6-6 12-6 16-2M0 0C-6 6-12 6-16 2" stroke-width="1"/>
+    </g>
+  </defs>
+  <path d="M0 6H240M0 54H240" stroke-width="1.4"/>
+  <path d="M0 10H240M0 50H240" stroke-width=".7"/>
+  <path d="M82 30H104M136 30H140M220 30H224" stroke-width="1"/>
+  <use href="#medallion" transform="translate(60 30)"/>
+  <use href="#diamond" transform="translate(120 30)"/>
+  <use href="#scroll" transform="translate(180 30)"/>
+  <use href="#diamond" transform="translate(0 30)"/>
+  <use href="#diamond" transform="translate(240 30)"/>
+</svg>
