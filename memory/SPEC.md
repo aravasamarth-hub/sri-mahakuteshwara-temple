@@ -1,7 +1,7 @@
 # Mahakaleshwar Temple, Badami
 
 ## Product
-Frontend-only bilingual temple website with English-first content, Kannada toggle, React-state day/night theme, uploaded devotional audio control, responsive navigation, and static inquiry forms. Light mode uses the uploaded yellow mandala as its devotional pattern identity; night mode uses the uploaded dark navy-and-gold mandala as its contrasting identity.
+Frontend-only bilingual temple website with English-first content, Kannada toggle, React-state day/night theme, uploaded devotional audio control, responsive navigation, and static inquiry forms. Its reusable CSS/SVG heritage system has four purpose-built assets: 1920×1080 day/night desktop ornaments and 1080×2340 day/night mobile ornaments. Day mode uses Chalukya sandstone parchment, low-opacity mandalas, engraved corner vines, lotus borders, temple and Pushkarini line art; night mode recolors the same visual language in charcoal, bronze and metallic gold.
 
 ## Key flows
 - Visitors can browse Home, About, Timings, Poojas, Donations, Rooms, Marriage Halls, and Contact routes.
