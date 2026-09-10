@@ -73,7 +73,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Link to="/poojas" className="group block overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-soft)] shadow-sm hover:shadow-xl transition-all">
+          <Link to="/poojas" className="group block overflow-hidden rounded-2xl border border-(--border) bg-(--surface-soft) shadow-sm hover:shadow-xl transition-all">
             <div className="relative aspect-[4/3] overflow-hidden">
               <img src={templeImages.darshan} alt="Garbhagriha Darshan" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -86,13 +86,13 @@ export default function Home() {
                 </h3>
               </div>
             </div>
-            <div className="p-4 flex items-center justify-between text-xs text-[var(--muted)] group-hover:text-[var(--gold)] transition-colors">
+            <div className="p-4 flex items-center justify-between text-xs text-(--muted) group-hover:text-(--gold) transition-colors">
               <span>{language === "en" ? "Book daily pooja" : language === "kn" ? "ಪೂಜೆ ಕಾಯ್ದಿರಿಸಿ" : "पूजा सेवा बुक करें"}</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          <Link to="/about" className="group block overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-soft)] shadow-sm hover:shadow-xl transition-all">
+          <Link to="/about" className="group block overflow-hidden rounded-2xl border border-(--border) bg-(--surface-soft) shadow-sm hover:shadow-xl transition-all">
             <div className="relative aspect-[4/3] overflow-hidden">
               <img src={templeImages.water} alt="Papavinasha Pushkarini" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -105,13 +105,13 @@ export default function Home() {
                 </h3>
               </div>
             </div>
-            <div className="p-4 flex items-center justify-between text-xs text-[var(--muted)] group-hover:text-[var(--gold)] transition-colors">
+            <div className="p-4 flex items-center justify-between text-xs text-(--muted) group-hover:text-(--gold) transition-colors">
               <span>{language === "en" ? "Sacred bathing pool" : language === "kn" ? "ಪಾಪ ಪರಿಹಾರಕ ತೀರ್ಥ" : "पावन स्नान कुंड"}</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          <Link to="/about" className="group block overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-soft)] shadow-sm hover:shadow-xl transition-all">
+          <Link to="/about" className="group block overflow-hidden rounded-2xl border border-(--border) bg-(--surface-soft) shadow-sm hover:shadow-xl transition-all">
             <div className="relative aspect-[4/3] overflow-hidden">
               <img src={templeImages.banyan} alt="Sacred Banyan Tree" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -124,13 +124,13 @@ export default function Home() {
                 </h3>
               </div>
             </div>
-            <div className="p-4 flex items-center justify-between text-xs text-[var(--muted)] group-hover:text-[var(--gold)] transition-colors">
+            <div className="p-4 flex items-center justify-between text-xs text-(--muted) group-hover:text-(--gold) transition-colors">
               <span>{language === "en" ? "Centuries of faith" : language === "kn" ? "ತಪಸ್ಸಿನ ವೃಕ್ಷ" : "तपस्या का पावन स्थल"}</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          <Link to="/about" className="group block overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-soft)] shadow-sm hover:shadow-xl transition-all">
+          <Link to="/about" className="group block overflow-hidden rounded-2xl border border-(--border) bg-(--surface-soft) shadow-sm hover:shadow-xl transition-all">
             <div className="relative aspect-[4/3] overflow-hidden">
               <img src={templeImages.twinShrines} alt="Badami Chalukya Shrines" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -143,7 +143,7 @@ export default function Home() {
                 </h3>
               </div>
             </div>
-            <div className="p-4 flex items-center justify-between text-xs text-[var(--muted)] group-hover:text-[var(--gold)] transition-colors">
+            <div className="p-4 flex items-center justify-between text-xs text-(--muted) group-hover:text-(--gold) transition-colors">
               <span>{language === "en" ? "6th–7th Century CE" : language === "kn" ? "ಐತಿಹಾಸಿಕ ಶಿಲ್ಪ ವೈಭವ" : "ऐतिहासिक वैभव"}</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>

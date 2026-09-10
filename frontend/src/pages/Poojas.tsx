@@ -18,8 +18,8 @@ export default function Poojas() {
     <section className="section-pad pattern-surface" data-testid="pooja-list-section">
       <div className="container-wide">
         {/* Sacred Sanctum & Papavinasha Spotlight */}
-        <div className="mb-14 grid items-center gap-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-soft)] p-6 sm:p-8 lg:grid-cols-[0.85fr_1.15fr] shadow-lg">
-          <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] shadow-md group">
+        <div className="mb-14 grid items-center gap-8 rounded-3xl border border-(--border) bg-(--surface-soft) p-6 sm:p-8 lg:grid-cols-[0.85fr_1.15fr] shadow-lg">
+          <div className="relative overflow-hidden rounded-2xl border border-(--border) shadow-md group">
             <img
               src={templeImages.darshan}
               alt="Sri Mahakuteshwara Garbhagriha Shiva Linga Darshan"

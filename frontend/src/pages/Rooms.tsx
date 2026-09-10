@@ -96,7 +96,7 @@ export default function Rooms() {
         <div className="container-wide grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Authentic Guest House & Room Gallery */}
           <div>
-            <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-soft)] shadow-md">
+            <div className="relative overflow-hidden rounded-2xl border border-(--border) bg-(--surface-soft) shadow-md">
               <img
                 className="w-full h-[380px] sm:h-[420px] object-cover transition-all duration-300"
                 src={activePhoto}
@@ -124,7 +124,7 @@ export default function Rooms() {
                   onClick={() => setActivePhoto(photo.src)}
                   className={`group relative h-16 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                     activePhoto === photo.src
-                      ? "border-[var(--gold)] scale-105 shadow-md"
+                      ? "border-(--gold) scale-105 shadow-md"
                       : "border-transparent opacity-75 hover:opacity-100"
                   }`}
                   data-testid={idx === 1 ? "room-image-detail" : idx === 4 ? "room-image-gateway" : `room-thumb-${idx}`}
@@ -135,8 +135,8 @@ export default function Rooms() {
               ))}
             </div>
 
-            <div className="mt-4 p-4 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs text-[var(--muted)] flex items-center gap-3">
-              <Home size={18} className="text-[var(--gold)] shrink-0" />
+            <div className="mt-4 p-4 rounded-xl border border-(--border) bg-(--surface-soft) text-xs text-(--muted) flex items-center gap-3">
+              <Home size={18} className="text-(--gold) shrink-0" />
               <span>
                 {language === "en"
                   ? "Located directly inside Sri Kshetra Mahakuta campus with quick walking access to the sanctum and Papavinasha holy water tank."
@@ -186,7 +186,7 @@ export default function Rooms() {
                 {copy.enquireRoom}
                 <ArrowRight size={16} />
               </button>
-              <span className="text-xs text-[var(--muted)]">
+              <span className="text-xs text-(--muted)">
                 {language === "en"
                   ? "Direct booking assistance by temple reception"
                   : language === "kn"

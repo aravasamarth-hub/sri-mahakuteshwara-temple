@@ -104,10 +104,10 @@ function TempleHeader() {
             <SheetContent side="right" className="temple-mobile-sheet flex flex-col justify-between">
               <div>
                 <SheetHeader>
-                  <SheetTitle className="font-heading text-left text-xl text-[var(--text)]">{copy.temple}</SheetTitle>
+                  <SheetTitle className="font-heading text-left text-xl text-(--text)">{copy.temple}</SheetTitle>
                 </SheetHeader>
                 
-                <div className="mt-4 flex items-center justify-between gap-2 border-b border-[var(--line)] pb-4">
+                <div className="mt-4 flex items-center justify-between gap-2 border-b border-(--line) pb-4">
                   <div className="flex items-center gap-2">
                     <button className="icon-control" onClick={toggleTheme} aria-label={theme === "day" ? "Switch to night mode" : "Switch to day mode"}>
                       {theme === "day" ? <Moon size={18} /> : <Sun size={18} />}
@@ -116,7 +116,7 @@ function TempleHeader() {
                       {audioOn ? <AudioLines size={18} /> : <Music2 size={18} />}
                     </button>
                   </div>
-                  <span className="text-xs text-[var(--muted)]">{theme === "day" ? "Day mode" : "Night mode"}</span>
+                  <span className="text-xs text-(--muted)">{theme === "day" ? "Day mode" : "Night mode"}</span>
                 </div>
 
                 <div className="mt-6 flex flex-col gap-2" data-testid="mobile-navigation">
@@ -124,8 +124,8 @@ function TempleHeader() {
                 </div>
               </div>
 
-              <div className="mt-6 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4 text-sm text-[var(--muted)]">
-                <span className="mb-2 block uppercase tracking-[0.2em] text-[10px] text-[var(--gold)]">{copy.liveDarshan}</span>
+              <div className="mt-6 rounded-xl border border-(--line) bg-(--surface) p-4 text-sm text-(--muted)">
+                <span className="mb-2 block uppercase tracking-[0.2em] text-[10px] text-(--gold)">{copy.liveDarshan}</span>
                 {copy.morning} · {copy.from} – {copy.to}
               </div>
             </SheetContent>
@@ -141,11 +141,11 @@ function TempleFooter() {
   const { copy, language } = useTemple();
   return <footer className="temple-footer" data-testid="site-footer">
     <div className="container-wide grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
-      <div data-testid="footer-brand"><div className="footer-brand-title"><TempleLogoMark /><span>{copy.temple}<small>{copy.place}</small></span></div><p className="mt-4 max-w-sm text-sm leading-7 text-[var(--muted)]">{copy.footerLine}</p></div>
+      <div data-testid="footer-brand"><div className="footer-brand-title"><TempleLogoMark /><span>{copy.temple}<small>{copy.place}</small></span></div><p className="mt-4 max-w-sm text-sm leading-7 text-(--muted)">{copy.footerLine}</p></div>
       <div data-testid="footer-quick-links"><p className="eyebrow mb-4">{language === "en" ? "Quick links" : language === "kn" ? "ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು" : "त्वरित लिंक"}</p><div className="grid grid-cols-2 gap-y-3">{navItems.slice(0, 6).map((item) => <Link key={item.to} to={item.to} className="footer-link" data-testid={`footer-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{item[language]}</Link>)}</div></div>
-      <div data-testid="footer-connect"><p className="eyebrow mb-4">{language === "en" ? "Connect with us" : language === "kn" ? "ನಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ" : "संपर्क सूत्र"}</p><p className="text-sm leading-7 text-[var(--muted)]">{copy.phone}<br />{copy.email}</p><div className="mt-5 flex gap-2"><a href="#" aria-label="Instagram" className="social-link" data-testid="social-instagram"><span className="font-serif text-sm font-bold">ig</span></a><a href="#" aria-label="Facebook" className="social-link" data-testid="social-facebook"><span className="font-serif text-sm font-bold">f</span></a><a href="#" aria-label="YouTube" className="social-link" data-testid="social-youtube"><span className="font-serif text-sm font-bold">yt</span></a></div></div>
+      <div data-testid="footer-connect"><p className="eyebrow mb-4">{language === "en" ? "Connect with us" : language === "kn" ? "ನಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ" : "संपर्क सूत्र"}</p><p className="text-sm leading-7 text-(--muted)">{copy.phone}<br />{copy.email}</p><div className="mt-5 flex gap-2"><a href="#" aria-label="Instagram" className="social-link" data-testid="social-instagram"><span className="font-serif text-sm font-bold">ig</span></a><a href="#" aria-label="Facebook" className="social-link" data-testid="social-facebook"><span className="font-serif text-sm font-bold">f</span></a><a href="#" aria-label="YouTube" className="social-link" data-testid="social-youtube"><span className="font-serif text-sm font-bold">yt</span></a></div></div>
     </div>
-    <div className="footer-bottom"><div className="container-wide flex flex-col justify-between gap-2 py-4 text-xs text-[var(--muted)] sm:flex-row"><span data-testid="footer-copyright">© {new Date().getFullYear()} {copy.temple}, {copy.place}</span><span data-testid="footer-language">{language === "en" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : language === "kn" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : "सर्वे भवन्तु सुखिनः"}</span></div></div>
+    <div className="footer-bottom"><div className="container-wide flex flex-col justify-between gap-2 py-4 text-xs text-(--muted) sm:flex-row"><span data-testid="footer-copyright">© {new Date().getFullYear()} {copy.temple}, {copy.place}</span><span data-testid="footer-language">{language === "en" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : language === "kn" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : "सर्वे भवन्तु सुखिनः"}</span></div></div>
   </footer>;
 }
 

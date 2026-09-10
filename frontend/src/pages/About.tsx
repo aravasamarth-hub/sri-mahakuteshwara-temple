@@ -69,7 +69,7 @@ export default function About() {
                   className="info-card"
                   data-testid={`about-card-${title.slice(0, 8).toLowerCase().replaceAll(" ", "-")}`}
                 >
-                  <Icon size={20} className="text-[var(--gold)]" />
+                  <Icon size={20} className="text-(--gold)" />
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </article>
@@ -85,7 +85,7 @@ export default function About() {
           <div className="section-heading-row mb-8">
             <div>
               <p className="eyebrow flex items-center gap-1.5">
-                <ImageIcon size={15} className="text-[var(--gold)]" />
+                <ImageIcon size={15} className="text-(--gold)" />
                 {language === "en" ? "Sacred Heritage" : language === "kn" ? "ಪವಿತ್ರ ಪರಂಪರೆ" : "धरोहर दर्शन"}
               </p>
               <h2 className="section-title">
@@ -110,7 +110,7 @@ export default function About() {
               <div
                 key={item.id}
                 onClick={() => setActiveGalleryItem(item)}
-                className="group relative cursor-pointer overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] aspect-[4/3] shadow-sm hover:shadow-lg transition-all"
+                className="group relative cursor-pointer overflow-hidden rounded-xl border border-(--border) bg-(--surface-soft) aspect-[4/3] shadow-sm hover:shadow-lg transition-all"
                 data-testid={`gallery-item-${item.id}`}
               >
                 <img
