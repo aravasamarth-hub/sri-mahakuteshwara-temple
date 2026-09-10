@@ -1,8 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import TempleLayout from "@/components/TempleLayout";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
-import Timings from "@/pages/Timings";
 import Poojas from "@/pages/Poojas";
 import Donations from "@/pages/Donations";
 import Rooms from "@/pages/Rooms";
@@ -16,7 +15,7 @@ export default function App() {
       <Route element={<TempleLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/timings" element={<Timings />} />
+        <Route path="/timings" element={<Navigate to="/about" replace />} />
         <Route path="/poojas" element={<Poojas />} />
         <Route path="/donations" element={<Donations />} />
         <Route path="/rooms" element={<Rooms />} />

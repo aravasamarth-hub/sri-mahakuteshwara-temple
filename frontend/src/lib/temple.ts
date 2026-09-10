@@ -1,32 +1,74 @@
-export type Language = "en" | "kn";
+export type Language = "en" | "kn" | "hi";
 export type Theme = "day" | "night";
 export const devotionalAudioUrl = "https://customer-assets-4nw71qhi.emergentagent.net/job_mahakal-badami/artifacts/exdh3h2u_whatsapp-image-2026-09-03-at-17.56.09-GJHllNsIGmGkq38E.mp3.mpeg";
 
 export const templeImages = {
-  hero: "https://customer-assets-39nsmqrw.emergentagent.net/job_ab19e64e-071e-455d-ba2e-4200cd877bf1/artifacts/3b4uf6yk_file_00000000512071f6ac2e0755aa79c566.png",
-  gateway: "https://customer-assets-39nsmqrw.emergentagent.net/job_ab19e64e-071e-455d-ba2e-4200cd877bf1/artifacts/j3idh28r_file_00000000d25c71f68fdd9de317329e2e.png",
-  courtyard: "https://customer-assets-39nsmqrw.emergentagent.net/job_ab19e64e-071e-455d-ba2e-4200cd877bf1/artifacts/i5mgk5dj_file_00000000c19471f6af963617adbae331.png",
-  carving: "https://customer-assets-39nsmqrw.emergentagent.net/job_ab19e64e-071e-455d-ba2e-4200cd877bf1/artifacts/p5k19mp3_file_00000000bd0471f594da865f65f01ce6.png",
-  water: "https://customer-assets-39nsmqrw.emergentagent.net/job_ab19e64e-071e-455d-ba2e-4200cd877bf1/artifacts/tps8kpnr_file_00000000ace471f682a90cea51e11274.png",
+  hero: "/mahakuta-entrance.jpg",
+  gateway: "/images/temple/ornate-mahadwara.jpg",
+  courtyard: "/images/temple/open-courtyard-deepasthamba.jpg",
+  carving: "/images/temple/shiva-linga-carved-pediment.jpg",
+  water: "/images/temple/pushkarini-sacred-tank.jpg",
+  darshan: "/images/temple/darshan-shiva-linga.jpg",
+  pushkariniSteps: "/images/temple/pushkarini-steps-shrine.jpg",
+  banyan: "/images/temple/sacred-banyan-tree.jpg",
+  nandiMandapa: "/images/temple/nandi-mandapa-steps.jpg",
+  shikhara: "/images/temple/mahakuta-shikhara.jpg",
+  twinShrines: "/images/temple/twin-stepped-shrines.jpg",
+  twinShrinesCanopy: "/images/temple/twin-shrines-canopy.jpg",
+  nandiUnderTree: "/images/temple/nandi-under-sacred-tree.jpg",
+  chalukyaMandapa: "/images/temple/chalukya-mandapa-pillars.jpg",
+  steppedVimana: "/images/temple/chalukya-stepped-vimana.jpg",
+  hillSteps: "/images/temple/hill-stone-steps.jpg",
+  peepalPlatform: "/images/temple/peepal-tree-platform.jpg",
+  pedimentNandi: "/images/temple/pediment-nandi-view.jpg",
+  courtyardWalk: "/images/temple/temple-courtyard-walk.jpg",
+  shadedCourtyard: "/images/temple/shaded-shrine-courtyard.jpg",
+  carvedShrine: "/images/temple/carved-chalukya-shrine.jpg",
+  ancientShrinesGreenery: "/images/temple/ancient-shrines-greenery.jpg",
 };
 
+export const roomImages = {
+  pravasiNilayaWide: "/images/rooms/pravasi-nilaya-wide.jpg",
+  pravasiNilayaEntrance: "/images/rooms/pravasi-nilaya-entrance.jpg",
+  roomDoubleDeity: "/images/rooms/room-double-bed-deity.jpg",
+  roomDoubleFloral: "/images/rooms/room-double-bed-floral.jpg",
+  roomSingle: "/images/rooms/room-interior-single.jpg",
+};
+
+export const templeGallery = [
+  { id: "darshan", src: templeImages.darshan, en: "Garbhagriha Shiva Linga Darshan", kn: "ಗರ್ಭಗುಡಿ ಶ್ರೀ ಶಿವಲಿಂಗ ದರ್ಶನ", hi: "गर्भगृह श्री शिवलिंग दर्शन" },
+  { id: "pushkarini", src: templeImages.water, en: "Sacred Pushkarini (Papavinasha Theertha)", kn: "ಪಾಪವಿನಾಶ ಪುಷ್ಕರಿಣಿ ಪವಿತ್ರ ತೀರ್ಥ", hi: "पापविनाशी पवित्र पुष्करिणी" },
+  { id: "twin-shrines", src: templeImages.twinShrines, en: "Ancient Badami Chalukya Twin Shrines", kn: "ಬಾದಾಮಿ ಚಾಲುಕ್ಯರ ಜೋಡಿ ದೇವಾಲಯಗಳು", hi: "प्राचीन बादामी चालुक्य जुड़वां मंदिर" },
+  { id: "banyan", src: templeImages.banyan, en: "Centuries-Old Sacred Banyan Tree", kn: "ಶತಮಾನಗಳ ಪ್ರಾಚೀನ ಪವಿತ್ರ ಆಲದ ಮರ", hi: "शताब्दियों पुराना पावन वटवृक्ष" },
+  { id: "nandi-mandapa", src: templeImages.nandiMandapa, en: "Pillared Nandi Mandapa & Pavilions", kn: "ಕಲ್ಲಿನ ಕಂಬಗಳ ನಂದಿ ಮಂಟಪ", hi: "स्तंभयुक्त नंदी मंडप" },
+  { id: "nandi-tree", src: templeImages.nandiUnderTree, en: "Nandi Bulls under Sacred Canopy", kn: "ವೃಕ್ಷ ಛಾಯೆಯಲ್ಲಿ ನಂದಿ ವಿಗ್ರಹಗಳು", hi: "पावन छांव में नंदी प्रतिमाएं" },
+  { id: "pediment", src: templeImages.carving, en: "Sculpted Deities on Stone Pediment", kn: "ಶಿಲಾ ಮಂಟಪದ ಮೇಲಿನ ದೇವತಾ ಕೆತ್ತನೆಗಳು", hi: "शिला मंडप पर उत्कीर्ण देवी-देवता" },
+  { id: "mahadwara", src: templeImages.gateway, en: "Grand White Mahadwara Archway", kn: "ಶ್ವೇತ ಮಹಾದ್ವಾರ ಕಮಾನು", hi: "भव्य श्वेत महाद्वार" },
+  { id: "hill-steps", src: templeImages.hillSteps, en: "Ancient Hillside Stone Steps", kn: "ಪ್ರಾಚೀನ ಕಲ್ಲಿನ ಮೆಟ್ಟಿಲುಗಳ ಮಾರ್ಗ", hi: "प्राचीन पाषाण सीढ़ियां" },
+  { id: "courtyard-walk", src: templeImages.courtyardWalk, en: "Temple Courtyard & Shrines Walkway", kn: "ದೇವಾಲಯದ ಪ್ರಾಂಗಣ ಮತ್ತು ಶಿಲಾ ಗೋಡೆಗಳು", hi: "मंदिर प्रांगण एवं शिला दीवारें" },
+  { id: "pushkarini-steps", src: templeImages.pushkariniSteps, en: "Pushkarini Steps & Garlanded Shrine", kn: "ಪುಷ್ಕರಿಣಿ ಮೆಟ್ಟಿಲುಗಳು ಮತ್ತು ಪುಷ್ಪಾಲಂಕೃತ ಗುಡಿ", hi: "पुष्करिणी सोपान एवं पुष्पालंकृत देवालय" },
+  { id: "shikhara", src: templeImages.shikhara, en: "Mahakuteshwara Dravidian Shikhara", kn: "ಮಹಾಕೂಟೇಶ್ವರ ಭವ್ಯ ಶಿಖರ", hi: "महाकूटेश्वर भव्य शिखर" },
+];
+
+
 export const navItems = [
-  { to: "/", en: "Home", kn: "ಮುಖಪುಟ" },
-  { to: "/about", en: "About", kn: "ನಮ್ಮ ಬಗ್ಗೆ" },
-  { to: "/timings", en: "Timings", kn: "ಸಮಯ" },
-  { to: "/poojas", en: "Poojas", kn: "ಪೂಜೆಗಳು" },
-  { to: "/donations", en: "Hundi", kn: "ಹುಂಡಿ" },
-  { to: "/rooms", en: "Rooms", kn: "ಕೊಠಡಿಗಳು" },
-  { to: "/halls", en: "Halls", kn: "ಮಂಟಪಗಳು" },
-  { to: "/contact", en: "Contact", kn: "ಸಂಪರ್ಕ" },
+  { to: "/", en: "Home", kn: "ಮುಖಪುಟ", hi: "मुखपृष्ठ" },
+  { to: "/about", en: "About", kn: "ನಮ್ಮ ಬಗ್ಗೆ", hi: "परिचय" },
+  { to: "/poojas", en: "Poojas", kn: "ಪೂಜೆಗಳು", hi: "पूजा सेवाएँ" },
+  { to: "/donations", en: "Hundi", kn: "ಹುಂಡಿ", hi: "हुंडी दान" },
+  { to: "/rooms", en: "Rooms", kn: "ಕೊಠಡಿಗಳು", hi: "भक्त निवास" },
+  { to: "/halls", en: "Halls", kn: "ಮಂಟಪಗಳು", hi: "कल्याण मंडप" },
+  { to: "/contact", en: "Contact", kn: "ಸಂಪರ್ಕ", hi: "संपर्क" },
 ];
 
 export type Pooja = {
   id: string;
   kn: string;
   en: string;
+  hi: string;
   descriptionEn: string;
   descriptionKn: string;
+  descriptionHi: string;
 };
 
 export const poojas: Pooja[] = [
@@ -34,44 +76,52 @@ export const poojas: Pooja[] = [
     id: "rudra-abisheka",
     kn: "ರುದ್ರಾಭಿಷೇಕ",
     en: "Rudra Abisheka",
+    hi: "रुद्राभिषेक",
     descriptionEn: "A sacred bathing ceremony with holy waters, milk, honey and Sri Rudram chanting.",
     descriptionKn: "ಪವಿತ್ರ ತೀರ್ಥ, ಹಾಲು, ಜೇನುತುಪ್ಪ ಮತ್ತು ಶ್ರೀ ರುದ್ರಂ ಪಠಣದೊಂದಿಗೆ ನೆರವೇರುವ ಅಭಿಷೇಕ.",
+    descriptionHi: "पवित्र तीर्थ, दूध, शहद और श्रीरुद्रम् पाठ के साथ पावन अभिषेक।",
   },
   {
     id: "ekadasha-rudrabisheka",
     kn: "ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ",
     en: "Ekadasha Rudra Abisheka",
+    hi: "एकादश रुद्राभिषेक",
     descriptionEn: "Eleven recitations of Sri Rudram offered for peace, health and prosperity.",
     descriptionKn: "ಶಾಂತಿ, ಆರೋಗ್ಯ ಮತ್ತು ಸಮೃದ್ಧಿಗಾಗಿ ಹನ್ನೊಂದು ಬಾರಿ ಶ್ರೀ ರುದ್ರಂ ಜಪದೊಂದಿಗೆ ಮಹಾ ಪೂಜೆ.",
+    descriptionHi: "शांति, आरोग्य और समृद्धि के लिए ग्यारह बार श्रीरुद्रम् जप सहित महापूजा।",
   },
   {
     id: "ekavara-abisheka",
     kn: "ಏಕವಾರ ರುದ್ರಾಭಿಷೇಕ",
     en: "Ekavara Abisheka",
+    hi: "एकवार रुद्राभिषेक",
     descriptionEn: "A focused single-cycle abishekam for personal wellness and spiritual harmony.",
     descriptionKn: "ವೈಯಕ್ತಿಕ ಯೋಗಕ್ಷೇಮ ಹಾಗೂ ಆಧ್ಯಾತ್ಮಿಕ ನೆಮ್ಮದಿಗಾಗಿ ನಡೆಸುವ ಏಕವಾರ ಪವಿತ್ರ ಸೇವೆ.",
+    descriptionHi: "व्यक्तिगत कल्याण और आध्यात्मिक शांति के लिए एक चक्र का पावन अभिषेक।",
   },
   {
     id: "panchamrutha-abisheka",
     kn: "ಪಂಚಾಮೃತ ಅಭಿಷೇಕ",
     en: "Panchamrutha Abisheka",
+    hi: "पंचामृत अभिषेक",
     descriptionEn: "A special ritual using five sacred nectars: milk, curd, ghee, honey and sugar.",
     descriptionKn: "ಹಾಲು, ಮೊಸರು, ತುಪ್ಪ, ಜೇನುತುಪ್ಪ ಮತ್ತು ಸಕ್ಕರೆಯ ಪಂಚಾಮೃತಗಳಿಂದ ಸಲ್ಲಿಸುವ ವಿಶೇಷ ಅಭಿಷೇಕ.",
+    descriptionHi: "दूध, दही, घी, शहद और शर्करा के पंचामृत से भगवान शिव का विशेष अभिषेक।",
   },
 ];
 
-export type Donation = { id: string; en: string; kn: string; descriptionEn: string; descriptionKn: string };
+export type Donation = { id: string; en: string; kn: string; hi: string; descriptionEn: string; descriptionKn: string; descriptionHi: string };
 
 export const donations: Donation[] = [
-  { id: "temple-dev", en: "Temple Development", kn: "ದೇವಾಲಯ ಅಭಿವೃದ್ಧಿ", descriptionEn: "Help preserve ancient stone carvings and grow a welcoming temple campus.", descriptionKn: "ಪುರಾತನ ಕಲ್ಲಿನ ಕೆತ್ತನೆಗಳ ಸಂರಕ್ಷಣೆ ಮತ್ತು ದೇವಾಲಯದ ಆವರಣದ ಅಭಿವೃದ್ಧಿಗೆ ನೆರವಾಗಿ." },
-  { id: "society-welfare", en: "Society Welfare", kn: "ಸಮಾಜ ಕಲ್ಯಾಣ", descriptionEn: "Support healthcare camps, education and social upliftment in the Badami region.", descriptionKn: "ಬಾದಾಮಿ ಪ್ರದೇಶದ ವೈದ್ಯಕೀಯ ಶಿಬಿರ, ಶಿಕ್ಷಣ ಮತ್ತು ಸಮಾಜಮುಖಿ ಸೇವೆಗೆ ಬೆಂಬಲ ನೀಡಿ." },
-  { id: "annadhana", en: "Annadhana (Food Seva)", kn: "ಅನ್ನದಾನ ಸೇವೆ", descriptionEn: "Offer nutritious prasadam and a warm meal to visiting devotees every day.", descriptionKn: "ಪ್ರತಿದಿನ ಆಗಮಿಸುವ ಭಕ್ತಾದಿಗಳಿಗೆ ಪ್ರಸಾದ ಮತ್ತು ಉಚಿತ ಮಹಾ ಭೋಜನವನ್ನು ಒದಗಿಸಿ." },
-  { id: "trust-donation", en: "Trust Donation", kn: "ಟ್ರಸ್ಟ್ ದೇಣಿಗೆ", descriptionEn: "Make a general contribution to the temple religious and charitable trust.", descriptionKn: "ದೇವಾಲಯದ ಧಾರ್ಮಿಕ ಮತ್ತು ದತ್ತಿ ಟ್ರಸ್ಟ್‌ನ ಸಾಮಾನ್ಯ ಸೇವೆಗಳಿಗೆ ಕಾಣಿಕೆ ನೀಡಿ." },
+  { id: "temple-dev", en: "Temple Development", kn: "ದೇವಾಲಯ ಅಭಿವೃದ್ಧಿ", hi: "मंदिर विकास", descriptionEn: "Help preserve ancient stone carvings and grow a welcoming temple campus.", descriptionKn: "ಪುರಾತನ ಕಲ್ಲಿನ ಕೆತ್ತನೆಗಳ ಸಂರಕ್ಷಣೆ ಮತ್ತು ದೇವಾಲಯದ ಆವರಣದ ಅಭಿವೃದ್ಧಿಗೆ ನೆರವಾಗಿ.", descriptionHi: "प्राचीन पाषाण नक्काशी के संरक्षण और मंदिर परिसर के संवर्धन में सहयोग करें।" },
+  { id: "society-welfare", en: "Society Welfare", kn: "ಸಮಾಜ ಕಲ್ಯಾಣ", hi: "समाज कल्याण", descriptionEn: "Support healthcare camps, education and social upliftment in the Badami region.", descriptionKn: "ಬಾದಾಮಿ ಪ್ರದೇಶದ ವೈದ್ಯಕೀಯ ಶಿಬಿರ, ಶಿಕ್ಷಣ ಮತ್ತು ಸಮಾಜಮುಖಿ ಸೇವೆಗೆ ಬೆಂಬಲ ನೀಡಿ.", descriptionHi: "बादामी क्षेत्र में स्वास्थ्य शिविर, शिक्षा और जनकल्याणकारी कार्यों में सहायता दें।" },
+  { id: "annadhana", en: "Annadhana (Food Seva)", kn: "ಅನ್ನದಾನ ಸೇವೆ", hi: "अन्नदान सेवा", descriptionEn: "Offer nutritious prasadam and a warm meal to visiting devotees every day.", descriptionKn: "ಪ್ರತಿದಿನ ಆಗಮಿಸುವ ಭಕ್ತಾದಿಗಳಿಗೆ ಪ್ರಸಾದ ಮತ್ತು ಉಚಿತ ಮಹಾ ಭೋಜನವನ್ನು ಒದಗಿಸಿ.", descriptionHi: "मंदिर आने वाले श्रद्धालुओं को प्रतिदिन महाप्रसाद और भोजन सेवा अर्पित करें।" },
+  { id: "trust-donation", en: "Trust Donation", kn: "ಟ್ರಸ್ಟ್ ದೇಣಿಗೆ", hi: "ट्रस्ट सहयोग", descriptionEn: "Make a general contribution to the temple religious and charitable trust.", descriptionKn: "ದೇವಾಲಯದ ಧಾರ್ಮಿಕ ಮತ್ತು ದತ್ತಿ ಟ್ರಸ್ಟ್‌ನ ಸಾಮಾನ್ಯ ಸೇವೆಗಳಿಗೆ ಕಾಣಿಕೆ ನೀಡಿ.", descriptionHi: "मंदिर धार्मिक एवं धर्मार्थ ट्रस्ट की सेवाओं के लिए सामान्य दान दें।" },
 ];
 
 export const halls = [
-  { id: "large-hall", en: "Large Kalyan Mantapa", kn: "ಬೃಹತ್ ಕಲ್ಯಾಣ ಮಂಟಪ", capacityEn: "1,000+ guests", capacityKn: "1,000+ ಅತಿಥಿಗಳು", image: templeImages.gateway, featuresEn: "Dining hall · Stage & lighting · Green rooms · Parking", featuresKn: "ಭೋಜನ ಶಾಲೆ · ವೇದಿಕೆ ಮತ್ತು ಬೆಳಕು · ವಿಶ್ರಾಂತಿ ಕೊಠಡಿ · ಪಾರ್ಕಿಂಗ್" },
-  { id: "medium-hall", en: "Medium Function Hall", kn: "ಮಧ್ಯಮ ಸಭಾಂಗಣ", capacityEn: "300–500 guests", capacityKn: "300–500 ಅತಿಥಿಗಳು", image: templeImages.courtyard, featuresEn: "Traditional hall · Dining space · Dressing rooms", featuresKn: "ಸಾಂಪ್ರದಾಯಿಕ ಸಭಾಂಗಣ · ಭೋಜನ ಸ್ಥಳ · ಅಲಂಕಾರ ಕೊಠಡಿ" },
+  { id: "large-hall", en: "Large Kalyan Mantapa", kn: "ಬೃಹತ್ ಕಲ್ಯಾಣ ಮಂಟಪ", hi: "विशाल कल्याण मंडप", capacityEn: "1,000+ guests", capacityKn: "1,000+ ಅತಿಥಿಗಳು", capacityHi: "1,000+ अतिथि", image: templeImages.gateway, featuresEn: "Dining hall · Stage & lighting · Green rooms · Parking", featuresKn: "ಭೋಜನ ಶಾಲೆ · ವೇದಿಕೆ ಮತ್ತು ಬೆಳಕು · ವಿಶ್ರಾಂತಿ ಕೊಠಡಿ · ಪಾರ್ಕಿಂಗ್", featuresHi: "भोजनशाला · मंच और प्रकाश व्यवस्था · ग्रीन रूम्स · पार्किंग" },
+  { id: "medium-hall", en: "Medium Function Hall", kn: "ಮಧ್ಯಮ ಸಭಾಂಗಣ", hi: "मध्यम सभागार", capacityEn: "300–500 guests", capacityKn: "300–500 ಅತಿಥಿಗಳು", capacityHi: "300–500 अतिथि", image: templeImages.courtyard, featuresEn: "Traditional hall · Dining space · Dressing rooms", featuresKn: "ಸಾಂಪ್ರದಾಯಿಕ ಸಭಾಂಗಣ · ಭೋಜನ ಸ್ಥಳ · ಅಲಂಕಾರ ಕೊಠಡಿ", featuresHi: "पारंपरिक सभागार · भोजन कक्ष · श्रृंगार कक्ष" },
 ];
 
 export const ui = {
@@ -198,6 +248,68 @@ export const ui = {
     successEnquiry: "ವಿಚಾರಣೆ ಸಲ್ಲಿಸಲಾಗಿದೆ, ನಾವು ಶೀಘ್ರದಲ್ಲೇ ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.",
     required: "ದಯವಿಟ್ಟು ಅಗತ್ಯವಿರುವ ಮಾಹಿತಿಯನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
     facilities: ["ಹಾಸಿಗೆ, ಬೆಡ್‌ಶೀಟ್ ಮತ್ತು ದಿಂಬು ಲಭ್ಯ", "ಸ್ವಚ್ಛ ನಾನ್-ಎಸಿ ಕೊಠಡಿಗಳು", "ಬಿಸಿ ಮತ್ತು ತಣ್ಣೀರು ಇರುವ ಸ್ನಾನಗೃಹ", "24/7 ಶುದ್ಧ ಕುಡಿಯುವ ನೀರು", "24/7 ಭಕ್ತರ ಸೇವೆ ಲಭ್ಯ"],
+  },
+  hi: {
+    temple: "महाकालेश्वर मंदिर",
+    place: "बादामी",
+    tagline: "जहाँ पाषाण में बसती है भक्ति",
+    sacred: "॥ ॐ नमः शिवाय ॥",
+    bookPooja: "पूजा बुक करें",
+    donate: "हुंडी में अर्पण",
+    explore: "मंदिर दर्शन करें",
+    learnMore: "हमारा इतिहास जानें",
+    timings: "मंदिर समय",
+    morning: "प्रातः दर्शन",
+    evening: "सायं दर्शन",
+    open: "प्रतिदिन खुला है",
+    from: "प्रातः 8:00",
+    to: "सायं 6:00",
+    aboutTitle: "बादामी के पाषाण में जाग्रत पावन धाम",
+    aboutText: "बादामी के लाल बलुआ पत्थर की भव्यता के बीच, महाकालेश्वर मंदिर प्रत्येक श्रद्धालु का शांत दिव्यता से स्वागत करता है। यह साधना, प्रार्थना और सनातन परंपरा का पावन तीर्थ है।",
+    deityTitle: "महाकालेश्वर का दिव्य सामीप्य",
+    deityText: "भक्त कालजयी महाकालेश्वर महादेव से साहस, आरोग्य और आत्मिक शांति की प्रार्थना करते हैं। प्रत्येक अभिषेक जल, दीप, मंत्र और अगाध आस्था का अर्पण है।",
+    historyTitle: "भक्ति एवं साधना की धरोहर",
+    historyText: "मंदिर के गौरवशाली इतिहास का विवरण ट्रस्ट द्वारा शीघ्र ही साझा किया जाएगा। पीढ़ियों से परिवार यहाँ उत्सव, संकल्प और दर्शन के लिए आते रहे हैं।",
+    trustTitle: "मंदिर ट्रस्ट",
+    trustText: "श्री महाकालेश्वर धार्मिक एवं धर्मार्थ ट्रस्ट मंदिर की पवित्रता, तीर्थयात्रियों की सुविधा और समाज सेवा के लिए समर्पित है।",
+    poojaTitle: "पवित्र अनुष्ठानों से सेवा",
+    poojaIntro: "महाकालेश्वर महादेव के चरणों में अपनी प्रार्थना अर्पित करें। नीचे दी गई पूजा चुनें, हमारी टीम शीघ्र आपसे संपर्क करेगी।",
+    bookNow: "अभी बुक करें",
+    donationTitle: "आपकी भेंट बने सेवा",
+    donationIntro: "प्रत्येक योगदान दैनिक पूजा, धरोहर संरक्षण, अन्नदान और भक्त कल्याण में सहायक बनता है।",
+    donateNow: "दान करें",
+    roomsTitle: "श्रद्धालुओं के लिए सात्विक निवास",
+    roomsIntro: "परिवारों और तीर्थयात्रियों के लिए मंदिर के निकट स्वच्छ एवं शांत कक्षों की सुविधा।",
+    enquireRoom: "कक्ष पूछताछ / बुकिंग",
+    hallsTitle: "पावन वातावरण में मांगलिक कार्य",
+    hallsIntro: "मंदिर प्रांगण के पारंपरिक कल्याण मंडप में अपने पारिवारिक मांगलिक आयोजनों को पवित्रता दें।",
+    enquire: "पूछताछ करें",
+    contactTitle: "शिव सामीप्य में पधारें",
+    contactIntro: "दर्शन, पूजा, निवास और मंडप संबंधी किसी भी जानकारी के लिए हमें संपर्क करें।",
+    address: "मंदिर मार्ग, बादामी, कर्नाटक 587201",
+    phone: "+91 00000 00000",
+    email: "temple@example.com",
+    sendMessage: "पूछताछ भेजें",
+    footerLine: "प्रार्थना, धरोहर और सेवा का पावन तीर्थ।",
+    placeholder: "भक्ति संगीत · सुनने के लिए टैप करें",
+    liveDarshan: "दर्शन खुला है",
+    selectPooja: "चयनित सेवा",
+    optional: "वैकल्पिक",
+    cancel: "रद्द करें",
+    name: "आपका नाम",
+    phoneLabel: "फोन नंबर",
+    date: "इच्छित तिथि",
+    nakshatra: "नक्षत्र / गोत्र",
+    amount: "दान राशि",
+    donor: "दाता का नाम",
+    message: "आपका संदेश",
+    submitBooking: "बुकिंग जमा करें",
+    submitDonation: "दान राशि जमा करें",
+    successBooking: "बुकिंग अनुरोध प्राप्त हुआ, हम शीघ्र संपर्क करेंगे।",
+    successDonation: "धन्यवाद। आपकी दान भावना सहर्ष स्वीकार की गई।",
+    successEnquiry: "पूछताछ प्राप्त हुई, हम शीघ्र संपर्क करेंगे।",
+    required: "कृपया आवश्यक जानकारी भरें।",
+    facilities: ["बिस्तर, चादर एवं तकिया उपलब्ध", "स्वच्छ नॉन-एसी कक्ष", "गर्म व शीतल जल युक्त स्नानगृह", "24/7 शुद्ध पेयजल", "24/7 श्रद्धालु सहायता"],
   },
 } as const;
 

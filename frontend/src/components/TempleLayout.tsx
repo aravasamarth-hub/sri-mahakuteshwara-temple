@@ -4,7 +4,16 @@ import { AudioLines, Menu, Moon, Music2, Sun } from "lucide-react";
 import { devotionalAudioUrl, ui, navItems, type Copy, type Language, type Theme } from "@/lib/temple";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
-type TempleContextValue = { language: Language; theme: Theme; copy: Copy; toggleLanguage: () => void; toggleTheme: () => void; audioOn: boolean; toggleAudio: () => void };
+type TempleContextValue = {
+  language: Language;
+  theme: Theme;
+  copy: Copy;
+  setLanguage: (lang: Language) => void;
+  toggleLanguage: () => void;
+  toggleTheme: () => void;
+  audioOn: boolean;
+  toggleAudio: () => void;
+};
 const TempleContext = createContext<TempleContextValue | null>(null);
 
 function TempleLogoMark() {
@@ -42,8 +51,23 @@ function TempleProvider({ children }: PropsWithChildren) {
     }
   };
 
+  const toggleLanguage = () => {
+    setLanguage((current) => (current === "en" ? "kn" : current === "kn" ? "hi" : "en"));
+  };
+
   return (
-    <TempleContext.Provider value={{ language, theme, copy: ui[language], toggleLanguage: () => setLanguage((current) => current === "en" ? "kn" : "en"), toggleTheme: () => setTheme((current) => current === "day" ? "night" : "day"), audioOn, toggleAudio }}>
+    <TempleContext.Provider
+      value={{
+        language,
+        theme,
+        copy: ui[language],
+        setLanguage,
+        toggleLanguage,
+        toggleTheme: () => setTheme((current) => (current === "day" ? "night" : "day")),
+        audioOn,
+        toggleAudio,
+      }}
+    >
       <audio ref={audioRef} src={devotionalAudioUrl} autoPlay loop muted={!audioOn} preload="auto" aria-label="Devotional music" data-testid="devotional-audio" />
       {children}
     </TempleContext.Provider>
@@ -51,32 +75,59 @@ function TempleProvider({ children }: PropsWithChildren) {
 }
 
 function TempleHeader() {
-  const { language, theme, copy, toggleLanguage, toggleTheme, audioOn, toggleAudio } = useTemple();
+  const { language, theme, copy, setLanguage, toggleTheme, audioOn, toggleAudio } = useTemple();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="temple-header" data-testid="site-header">
-      <div className="container-wide flex h-20 items-center justify-between gap-6">
-        <Link to="/" className="temple-logo" data-testid="navbar-logo" onClick={() => setMobileOpen(false)}>
+      <div className="container-wide flex h-24 items-center justify-between gap-6 max-sm:h-20">
+        <Link to="/" className="temple-logo min-w-0 shrink" data-testid="navbar-logo" onClick={() => setMobileOpen(false)}>
           <TempleLogoMark />
-          <span className="min-w-0"><strong>{copy.temple}</strong><small>{copy.place} · {copy.tagline}</small></span>
+          <span className="min-w-0"><strong>{copy.temple}</strong><small className="hidden xs:block">{copy.place} · {copy.tagline}</small></span>
         </Link>
-        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary navigation" data-testid="desktop-navigation">
-          {navItems.map((item) => <NavLink key={item.to} to={item.to} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} data-testid={`nav-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{language === "en" ? item.en : item.kn}</NavLink>)}
+        <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary navigation" data-testid="desktop-navigation">
+          {navItems.map((item) => <NavLink key={item.to} to={item.to} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} data-testid={`nav-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{item[language]}</NavLink>)}
         </nav>
-        <div className="flex items-center gap-2" data-testid="header-controls">
-          <button className="language-switch" onClick={toggleLanguage} aria-label="Switch language" data-testid="language-toggle-btn"><span className={language === "en" ? "selected" : ""}>EN</span><i /> <span className={language === "kn" ? "selected" : ""}>ಕನ್ನಡ</span></button>
-          <button className="icon-control" onClick={toggleTheme} aria-label={theme === "day" ? "Switch to night mode" : "Switch to day mode"} data-testid="theme-toggle-btn">{theme === "day" ? <Moon size={17} /> : <Sun size={17} />}</button>
-          <button className={`icon-control audio-control ${audioOn ? "playing" : ""}`} onClick={toggleAudio} aria-label={audioOn ? "Mute devotional music" : "Play devotional music"} data-testid="audio-toggle-btn">{audioOn ? <AudioLines size={17} /> : <Music2 size={17} />}</button>
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0" data-testid="header-controls">
+          <div className="language-switch" role="group" aria-label="Switch language" data-testid="language-switch-group">
+            <button type="button" onClick={() => setLanguage("en")} className={language === "en" ? "selected" : ""} data-testid="language-btn-en">EN</button>
+            <i aria-hidden="true" />
+            <button type="button" onClick={() => setLanguage("kn")} className={language === "kn" ? "selected" : ""} data-testid="language-btn-kn">ಕನ್ನಡ</button>
+            <i aria-hidden="true" />
+            <button type="button" onClick={() => setLanguage("hi")} className={language === "hi" ? "selected" : ""} data-testid="language-btn-hi">हिंदी</button>
+          </div>
+          <button className="icon-control theme-btn" onClick={toggleTheme} aria-label={theme === "day" ? "Switch to night mode" : "Switch to day mode"} data-testid="theme-toggle-btn">{theme === "day" ? <Moon size={20} /> : <Sun size={20} />}</button>
+          <button className={`icon-control audio-control audio-btn ${audioOn ? "playing" : ""}`} onClick={toggleAudio} aria-label={audioOn ? "Mute devotional music" : "Play devotional music"} data-testid="audio-toggle-btn">{audioOn ? <AudioLines size={20} /> : <Music2 size={20} />}</button>
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger render={<button className="icon-control xl:hidden" aria-label="Open navigation" data-testid="mobile-menu-btn"><Menu size={19} /></button>} />
-            <SheetContent side="right" className="temple-mobile-sheet">
-              <SheetHeader><SheetTitle className="font-heading text-left text-xl text-[var(--text)]">{copy.temple}</SheetTitle></SheetHeader>
-              <div className="mt-8 flex flex-col gap-2" data-testid="mobile-navigation">
-                {navItems.map((item) => <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)} className={`mobile-nav-link ${location.pathname === item.to ? "active" : ""}`} data-testid={`mobile-nav-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{language === "en" ? item.en : item.kn}</Link>)}
+            <SheetTrigger render={<button type="button" className="icon-control menu-trigger xl:hidden shrink-0" aria-label="Open navigation" data-testid="mobile-menu-btn"><Menu size={22} /></button>} />
+            <SheetContent side="right" className="temple-mobile-sheet flex flex-col justify-between">
+              <div>
+                <SheetHeader>
+                  <SheetTitle className="font-heading text-left text-xl text-[var(--text)]">{copy.temple}</SheetTitle>
+                </SheetHeader>
+                
+                <div className="mt-4 flex items-center justify-between gap-2 border-b border-[var(--line)] pb-4">
+                  <div className="flex items-center gap-2">
+                    <button className="icon-control" onClick={toggleTheme} aria-label={theme === "day" ? "Switch to night mode" : "Switch to day mode"}>
+                      {theme === "day" ? <Moon size={18} /> : <Sun size={18} />}
+                    </button>
+                    <button className={`icon-control audio-control ${audioOn ? "playing" : ""}`} onClick={toggleAudio} aria-label={audioOn ? "Mute devotional music" : "Play devotional music"}>
+                      {audioOn ? <AudioLines size={18} /> : <Music2 size={18} />}
+                    </button>
+                  </div>
+                  <span className="text-xs text-[var(--muted)]">{theme === "day" ? "Day mode" : "Night mode"}</span>
+                </div>
+
+                <div className="mt-6 flex flex-col gap-2" data-testid="mobile-navigation">
+                  {navItems.map((item) => <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)} className={`mobile-nav-link ${location.pathname === item.to ? "active" : ""}`} data-testid={`mobile-nav-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{item[language]}</Link>)}
+                </div>
               </div>
-              <div className="mt-8 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4 text-sm text-[var(--muted)]"><span className="mb-2 block uppercase tracking-[0.2em] text-[10px] text-[var(--gold)]">{copy.placeholder}</span>{copy.liveDarshan} · {copy.from} – {copy.to}</div>
+
+              <div className="mt-6 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4 text-sm text-[var(--muted)]">
+                <span className="mb-2 block uppercase tracking-[0.2em] text-[10px] text-[var(--gold)]">{copy.liveDarshan}</span>
+                {copy.morning} · {copy.from} – {copy.to}
+              </div>
             </SheetContent>
           </Sheet>
         </div>
@@ -91,16 +142,16 @@ function TempleFooter() {
   return <footer className="temple-footer" data-testid="site-footer">
     <div className="container-wide grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
       <div data-testid="footer-brand"><div className="footer-brand-title"><TempleLogoMark /><span>{copy.temple}<small>{copy.place}</small></span></div><p className="mt-4 max-w-sm text-sm leading-7 text-[var(--muted)]">{copy.footerLine}</p></div>
-      <div data-testid="footer-quick-links"><p className="eyebrow mb-4">{language === "en" ? "Quick links" : "ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು"}</p><div className="grid grid-cols-2 gap-y-3">{navItems.slice(0, 6).map((item) => <Link key={item.to} to={item.to} className="footer-link" data-testid={`footer-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{language === "en" ? item.en : item.kn}</Link>)}</div></div>
-      <div data-testid="footer-connect"><p className="eyebrow mb-4">{language === "en" ? "Connect with us" : "ನಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ"}</p><p className="text-sm leading-7 text-[var(--muted)]">{copy.phone}<br />{copy.email}</p><div className="mt-5 flex gap-2"><a href="#" aria-label="Instagram" className="social-link" data-testid="social-instagram"><span className="font-serif text-sm font-bold">ig</span></a><a href="#" aria-label="Facebook" className="social-link" data-testid="social-facebook"><span className="font-serif text-sm font-bold">f</span></a><a href="#" aria-label="YouTube" className="social-link" data-testid="social-youtube"><span className="font-serif text-sm font-bold">yt</span></a></div></div>
+      <div data-testid="footer-quick-links"><p className="eyebrow mb-4">{language === "en" ? "Quick links" : language === "kn" ? "ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು" : "त्वरित लिंक"}</p><div className="grid grid-cols-2 gap-y-3">{navItems.slice(0, 6).map((item) => <Link key={item.to} to={item.to} className="footer-link" data-testid={`footer-link-${item.en.toLowerCase().replaceAll(" ", "-")}`}>{item[language]}</Link>)}</div></div>
+      <div data-testid="footer-connect"><p className="eyebrow mb-4">{language === "en" ? "Connect with us" : language === "kn" ? "ನಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ" : "संपर्क सूत्र"}</p><p className="text-sm leading-7 text-[var(--muted)]">{copy.phone}<br />{copy.email}</p><div className="mt-5 flex gap-2"><a href="#" aria-label="Instagram" className="social-link" data-testid="social-instagram"><span className="font-serif text-sm font-bold">ig</span></a><a href="#" aria-label="Facebook" className="social-link" data-testid="social-facebook"><span className="font-serif text-sm font-bold">f</span></a><a href="#" aria-label="YouTube" className="social-link" data-testid="social-youtube"><span className="font-serif text-sm font-bold">yt</span></a></div></div>
     </div>
-    <div className="footer-bottom"><div className="container-wide flex flex-col justify-between gap-2 py-4 text-xs text-[var(--muted)] sm:flex-row"><span data-testid="footer-copyright">© {new Date().getFullYear()} {copy.temple}, {copy.place}</span><span data-testid="footer-language">{language === "en" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : "May all beings be happy"}</span></div></div>
+    <div className="footer-bottom"><div className="container-wide flex flex-col justify-between gap-2 py-4 text-xs text-[var(--muted)] sm:flex-row"><span data-testid="footer-copyright">© {new Date().getFullYear()} {copy.temple}, {copy.place}</span><span data-testid="footer-language">{language === "en" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : language === "kn" ? "ಸರ್ವೇ ಜನಾಃ ಸುಖಿನೋ ಭವಂತು" : "सर्वे भवन्तु सुखिनः"}</span></div></div>
   </footer>;
 }
 
 function TempleFrame() {
-  const { theme } = useTemple();
-  return <div className={`temple-app ${theme === "night" ? "night" : "day"}`} data-testid="temple-app"><TempleHeader /><main data-testid="page-content"><Outlet /></main><TempleFooter /><div className="audio-status" data-testid="audio-status"><Music2 size={14} /><span>{useTemple().audioOn ? "Music on" : "Music muted"}</span></div></div>;
+  const { theme, language } = useTemple();
+  return <div className={`temple-app ${theme === "night" ? "night" : "day"}`} data-lang={language} lang={language} data-testid="temple-app"><TempleHeader /><main data-testid="page-content"><Outlet /></main><TempleFooter /><div className="audio-status" data-testid="audio-status"><Music2 size={14} /><span>{useTemple().audioOn ? "Music on" : "Music muted"}</span></div></div>;
 }
 
 export default function TempleLayout() {
