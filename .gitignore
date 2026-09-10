@@ -60,8 +60,9 @@ chainlit.md
 .ipynb_checkpoints/
 .ac
 
-# Deployment
+# Deployment & internal tools
 .vercel
+.emergent/
 
 # Data and databases
 agenthub/agents/youtube/db
