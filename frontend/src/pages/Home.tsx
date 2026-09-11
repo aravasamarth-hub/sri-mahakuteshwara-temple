@@ -99,7 +99,7 @@ export default function Home() {
 
         {/* Hero Text & Actions */}
         <motion.div
-          className="container-wide relative z-10 grid items-center gap-8 pt-16 pb-6 max-sm:pt-20 max-sm:pb-8 lg:grid-cols-[1.2fr_0.65fr]"
+          className="container-wide relative z-10 grid items-center gap-10 pt-16 pb-8 max-sm:pt-20 max-sm:pb-10 lg:grid-cols-[1.25fr_0.75fr]"
           style={{ opacity: heroContentOpacity, y: heroContentY }}
         >
           <div data-testid="hero-copy">
@@ -107,7 +107,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-kicker flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#ffe072] font-semibold [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]"
+              className="hero-kicker flex items-center gap-2 text-sm sm:text-base uppercase tracking-[0.28em] text-[#ffe072] font-semibold [text-shadow:0_1px_6px_rgba(0,0,0,0.95)]"
             >
               <span className="diya-dot" /> {copy.sacred} <span className="diya-dot" />
             </motion.div>
@@ -117,11 +117,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-title mt-2 text-white font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight [text-shadow:0_2px_12px_rgba(0,0,0,0.85),0_4px_24px_rgba(0,0,0,0.65)]"
+              className="hero-title mt-2 text-white font-heading text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight [text-shadow:0_2px_14px_rgba(0,0,0,0.9),0_4px_28px_rgba(0,0,0,0.7)] leading-[1.05]"
               data-testid="hero-title"
             >
               {copy.temple}
-              <em className="block text-2xl sm:text-4xl lg:text-5xl font-serif text-[#ffd866] not-italic mt-1 [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
+              <em className="block text-3xl sm:text-5xl lg:text-6xl font-serif text-[#ffd866] not-italic mt-2 [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
                 {copy.place}
               </em>
             </motion.h1>
@@ -131,7 +131,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-description mt-4 text-stone-100 text-sm sm:text-base max-w-xl leading-relaxed [text-shadow:0_1px_8px_rgba(0,0,0,0.95),0_2px_16px_rgba(0,0,0,0.7)] font-medium"
+              className="hero-description mt-5 text-stone-100 text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed [text-shadow:0_1px_8px_rgba(0,0,0,0.95),0_2px_18px_rgba(0,0,0,0.75)] font-normal"
               data-testid="hero-intro"
             >
               {copy.aboutText}
@@ -145,12 +145,12 @@ export default function Home() {
               className="mt-8 flex flex-wrap gap-4"
             >
               <GoldenButton to="/poojas" size="lg" data-testid="hero-book-pooja-btn">
-                {copy.bookPooja}
-                <ArrowRight size={16} />
+                <span className="text-sm sm:text-base font-bold">{copy.bookPooja}</span>
+                <ArrowRight size={18} />
               </GoldenButton>
               <GoldenButton to="/about" variant="ghost" size="lg" data-testid="hero-story-btn">
-                {copy.learnMore}
-                <ArrowDownRight size={16} />
+                <span className="text-sm sm:text-base font-medium">{copy.learnMore}</span>
+                <ArrowDownRight size={18} />
               </GoldenButton>
             </motion.div>
           </div>
@@ -160,7 +160,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-rail-stack flex flex-col gap-3.5 self-center lg:self-end"
+            className="hero-rail-stack flex flex-col gap-6 self-center lg:self-center"
           >
             {/* 01 Darshan Timings Rail Card (Updated live from backend) */}
             <div className="hero-rail" data-testid="hero-darshan-card">
@@ -170,7 +170,9 @@ export default function Home() {
                 <h2>
                   {copy.morning}
                   <br />
-                  {timings ? timings.morningDarshan : `${copy.from} — ${copy.to}`}
+                  <span className="text-white text-base sm:text-lg font-sans font-semibold tracking-wide">
+                    {timings ? timings.morningDarshan : `${copy.from} — ${copy.to}`}
+                  </span>
                 </h2>
                 <p>
                   {timings ? `Evening: ${timings.eveningDarshan}` : copy.tagline}
@@ -183,25 +185,25 @@ export default function Home() {
               <div className="hero-rail-number">02</div>
               <div>
                 <span className="eyebrow light flex items-center gap-1.5">
-                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/15 text-[#fbbf24]">
-                    <MapPin size={10} />
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border border-[#fbbf24]/60 bg-[#fbbf24]/20 text-[#fbbf24]">
+                    <MapPin size={11} />
                   </span>
                   {language === "en" ? "Address" : language === "kn" ? "ವಿಳಾಸ" : "पता"}
                 </span>
                 <h2>
                   {language === "en" ? "Temple Road, Badami" : language === "kn" ? "ದೇವಾಲಯ ರಸ್ತೆ, ಬಾದಾಮಿ" : "मंदिर मार्ग, बादामी"}
                 </h2>
-                <p className="flex items-center gap-1.5 flex-wrap">
+                <p className="flex items-center gap-2 flex-wrap">
                   <span>{language === "kn" ? "ಕರ್ನಾಟಕ 587201" : language === "hi" ? "कर्नाटक 587201" : "Karnataka 587201"}</span>
-                  <span className="text-[#fbbf24]/60">•</span>
+                  <span className="text-[#fbbf24] font-bold">•</span>
                   <a
                     href="https://maps.google.com/?q=Sri+Mahakuteshwara+Temple+Badami"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-0.5 text-[#fbbf24] hover:text-[#fde68a] transition-colors font-medium underline underline-offset-2"
+                    className="inline-flex items-center gap-1 text-[#fbbf24] hover:text-[#fde68a] transition-colors font-semibold underline underline-offset-4"
                   >
                     <span>{language === "en" ? "Directions" : language === "kn" ? "ದಾರಿ" : "दिशा"}</span>
-                    <ArrowUpRight size={11} />
+                    <ArrowUpRight size={13} />
                   </a>
                 </p>
               </div>
