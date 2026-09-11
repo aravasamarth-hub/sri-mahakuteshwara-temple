@@ -228,20 +228,20 @@ export default function Home() {
 
       {/* 2. Active Festival Banner (if backend active) */}
       {festivals.length > 0 && festivals[0].isActive && (
-        <section className="bg-(--maroon) text-white border-y border-(--gold) py-4 px-4">
+        <section className="bg-gradient-to-r from-[#942700] via-[#be3d05] to-[#882200] text-white border-y border-[#ffd54f]/50 py-4 px-4 shadow-md">
           <div className="container-wide flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="p-2 rounded-full bg-(--gold) text-white shrink-0">
+              <span className="p-2 rounded-full bg-[#fde047] text-stone-950 shrink-0 font-bold shadow-sm">
                 <Calendar size={18} />
               </span>
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-[#fbbf24] block">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#fef08a] block">
                   {language === "en" ? "Upcoming Sacred Festival" : language === "kn" ? "ಮುಂಬರುವ ಪವಿತ್ರ ಜಾತ್ರಾ ಮಹೋತ್ಸವ" : "आगामी पावन जात्रा महोत्सव"}
                 </span>
-                <strong className="text-sm sm:text-base font-serif">
+                <strong className="text-sm sm:text-base font-serif text-white">
                   {language === "en" ? festivals[0].titleEn : language === "kn" ? festivals[0].titleKn : festivals[0].titleHi}
                 </strong>
-                <span className="text-xs text-stone-200 ml-2 hidden sm:inline">
+                <span className="text-xs text-amber-100 ml-2 hidden sm:inline">
                   — {festivals[0].dateString}
                 </span>
               </div>
@@ -249,7 +249,7 @@ export default function Home() {
 
             <Link
               to="/poojas"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#fbbf24] hover:bg-(--gold) text-white text-xs font-semibold transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#ffd54f] bg-black/25 hover:bg-[#ffd54f] hover:text-stone-950 text-white text-xs font-semibold transition-all shadow-sm"
             >
               {language === "en" ? "Special Pooja Seva" : language === "kn" ? "ವಿಶೇಷ ಪೂಜಾ ಸೇವೆ" : "विशेष पूजा सेवा"}
               <ArrowRight size={13} />
