@@ -583,7 +583,7 @@ export default function PushkariniExperience() {
       <AnimatePresence>
         {selectedHotspot && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto"
             onClick={() => setSelectedHotspot(null)}
             data-testid="hotspot-modal-backdrop"
           >
@@ -593,22 +593,28 @@ export default function PushkariniExperience() {
               exit={{ opacity: 0, scale: 0.94, y: 20 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-stone-900/95 border border-[#d4af37]/40 shadow-2xl text-white backdrop-blur-xl flex flex-col"
+              className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-stone-900/95 border border-[#d4af37]/50 shadow-2xl text-white backdrop-blur-xl flex flex-col my-auto"
               data-testid="pushkarini-info-card"
             >
-              {/* Card Photo Banner */}
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-3xl bg-black">
+              {/* Card Photo Banner - Displays the complete, uncropped photo */}
+              <div className="relative w-full h-64 sm:h-80 md:h-96 bg-stone-950 flex items-center justify-center overflow-hidden rounded-t-3xl border-b border-stone-800">
+                {/* Ambient Blurred Backdrop */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center filter blur-2xl opacity-35 scale-125 pointer-events-none"
+                  style={{ backgroundImage: `url(${selectedHotspot.photo})` }}
+                />
+
+                {/* Uncropped, fully visible authentic photograph */}
                 <img
                   src={selectedHotspot.photo}
                   alt={selectedHotspot.titleEn}
-                  className="w-full h-full object-cover"
+                  className="relative z-10 max-h-full max-w-full object-contain drop-shadow-xl select-none"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/20 to-transparent" />
 
-                {/* Close Button */}
+                {/* Close Button - elevated z-index */}
                 <button
                   onClick={() => setSelectedHotspot(null)}
-                  className="absolute top-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white/80 hover:text-white border border-white/20 transition-colors shadow-lg cursor-pointer"
+                  className="absolute top-3 right-3 z-30 p-2.5 rounded-full bg-black/70 hover:bg-black/95 text-white/90 hover:text-white border border-white/25 transition-all shadow-xl hover:scale-105 cursor-pointer"
                   aria-label="Close details"
                   data-testid="close-info-card"
                 >
@@ -616,7 +622,7 @@ export default function PushkariniExperience() {
                 </button>
 
                 {/* Photo Caption Badge */}
-                <div className="absolute bottom-3 left-4 right-4 text-xs text-stone-300 font-sans line-clamp-1">
+                <div className="absolute bottom-2.5 left-3 right-3 z-20 px-3 py-1.5 rounded-lg bg-stone-950/80 backdrop-blur-md border border-white/10 text-xs text-stone-200 font-sans line-clamp-1 text-center">
                   <em>
                     {language === "en"
                       ? selectedHotspot.captionEn
