@@ -59,10 +59,24 @@ const fallbackFestivals: FestivalItem[] = [
   },
 ];
 
+// Authentic default active festival banner data
+const defaultActiveFestival: FestivalData = {
+  id: "mahashivaratri",
+  titleEn: "Maha Shivaratri Jagaran & Special Abhisheka",
+  titleKn: "ಮಹಾ ಶಿವರಾತ್ರಿ ಜಾಗರಣೆ ಹಾಗೂ ಮಹಾ ಅಭಿಷೇಕ",
+  titleHi: "महाशिवरात्रि जागरण एवं विशेष अभिषेक",
+  dateString: "Maha Shivaratri Night · All-night Darshan",
+  descriptionEn: "All-night Rudrabhisheka, continuous bilva patra offerings, and sacred deepotsava around the holy stepped shrine.",
+  descriptionKn: "ರಾತ್ರಿಪೂರ್ತಿ ನಿರಂತರ ರುದ್ರಾಭಿಷೇಕ, ಬಿಲ್ವಪತ್ರೆ ಸಮರ್ಪಣೆ ಮತ್ತು ಪುರಾತನ ದೇವಾಲಯದ ಪ್ರಾಂಗಣದಲ್ಲಿ ದೀಪೋತ್ಸವ.",
+  descriptionHi: "अहोरात्र रुद्राभिषेक, अखंड बिल्वपत्र अर्चन एवं दीप प्रज्ज्वलन सहित पावन जागरण।",
+  bannerImage: templeImages.darshan,
+  isActive: true,
+};
+
 export default function Home() {
   const { copy, language } = useTemple();
   const [timings, setTimings] = useState<TempleTimingsData | null>(null);
-  const [festivals, setFestivals] = useState<FestivalData[]>([]);
+  const [festivals, setFestivals] = useState<FestivalData[]>([defaultActiveFestival]);
 
   // Framer Motion scroll hook for smooth cinematic slow zoom & parallax
   const { scrollY } = useScroll();
@@ -73,7 +87,14 @@ export default function Home() {
 
   useEffect(() => {
     api.getTimings().then(setTimings).catch(() => {});
-    api.getFestivals().then(setFestivals).catch(() => {});
+    api
+      .getFestivals()
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setFestivals(data);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   return (
