@@ -158,24 +158,10 @@ function TempleHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showVolumePopup, setShowVolumePopup] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 40);
-
-      if (currentScrollY > 180) {
-        if (currentScrollY > lastScrollY.current + 8) {
-          setIsHidden(true); // scrolling down
-        } else if (currentScrollY < lastScrollY.current - 8) {
-          setIsHidden(false); // scrolling up
-        }
-      } else {
-        setIsHidden(false);
-      }
-      lastScrollY.current = currentScrollY;
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -184,8 +170,8 @@ function TempleHeader() {
 
   return (
     <header
-      className={`temple-header transition-transform duration-300 ${isHidden ? "-translate-y-full" : "translate-y-0"} ${
-        isScrolled ? "shadow-md backdrop-blur-md" : ""
+      className={`temple-header sticky top-0 z-50 transition-shadow duration-200 ${
+        isScrolled ? "shadow-xl border-b border-[#ffd54f]/60" : "shadow-md"
       }`}
       data-testid="site-header"
     >
