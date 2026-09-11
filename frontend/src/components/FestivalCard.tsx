@@ -187,7 +187,7 @@ export default function FestivalCard({ festival, onBookSeva }: FestivalCardProps
 
           {/* Ritual Schedule */}
           <div className="mt-4 pt-3 border-t border-(--line)">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-(--text) block mb-2 flex items-center gap-1.5">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-(--text) mb-2 flex items-center gap-1.5">
               <Sparkles size={13} className="text-(--gold)" />
               {language === "en" ? "Sacred Rituals" : language === "kn" ? "ಪೂಜಾ ವಿಧಿವಿಧಾನಗಳು" : "पूजा अनुष्ठान"}
             </span>

@@ -89,7 +89,7 @@ export default function RoomCalendar({ onSelectBooking }: RoomCalendarProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
         {/* Check-in */}
         <div>
-          <label className="text-xs font-semibold text-(--muted) block mb-1.5 flex items-center gap-1">
+          <label className="text-xs font-semibold text-(--muted) mb-1.5 flex items-center gap-1">
             <CalendarIcon size={13} className="text-(--gold)" />
             {language === "en" ? "Check-in Date" : language === "kn" ? "ಆಗಮನದ ದಿನಾಂಕ" : "आगमन तिथि"}
           </label>
@@ -104,7 +104,7 @@ export default function RoomCalendar({ onSelectBooking }: RoomCalendarProps) {
 
         {/* Check-out */}
         <div>
-          <label className="text-xs font-semibold text-(--muted) block mb-1.5 flex items-center gap-1">
+          <label className="text-xs font-semibold text-(--muted) mb-1.5 flex items-center gap-1">
             <CalendarIcon size={13} className="text-(--gold)" />
             {language === "en" ? "Check-out Date" : language === "kn" ? "ನಿರ್ಗಮನ ದಿನಾಂಕ" : "प्रस्थान तिथि"}
           </label>
@@ -119,7 +119,7 @@ export default function RoomCalendar({ onSelectBooking }: RoomCalendarProps) {
 
         {/* Rooms */}
         <div>
-          <label className="text-xs font-semibold text-(--muted) block mb-1.5 flex items-center gap-1">
+          <label className="text-xs font-semibold text-(--muted) mb-1.5 flex items-center gap-1">
             <Home size={13} className="text-(--gold)" />
             {language === "en" ? "Rooms" : language === "kn" ? "ಕೊಠಡಿಗಳ ಸಂಖ್ಯೆ" : "कमरों की संख्या"}
           </label>
@@ -138,7 +138,7 @@ export default function RoomCalendar({ onSelectBooking }: RoomCalendarProps) {
 
         {/* Guests */}
         <div>
-          <label className="text-xs font-semibold text-(--muted) block mb-1.5 flex items-center gap-1">
+          <label className="text-xs font-semibold text-(--muted) mb-1.5 flex items-center gap-1">
             <Users size={13} className="text-(--gold)" />
             {language === "en" ? "Devotees / Guests" : language === "kn" ? "ಭಕ್ತರ ಸಂಖ್ಯೆ" : "यात्रियों की संख्या"}
           </label>
