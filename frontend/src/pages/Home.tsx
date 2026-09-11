@@ -226,22 +226,22 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* 2. Active Festival Banner (if backend active) */}
+      {/* 2. Active Festival Announcement Banner */}
       {festivals.length > 0 && festivals[0].isActive && (
-        <section className="bg-gradient-to-r from-[#942700] via-[#be3d05] to-[#882200] text-white border-y border-[#ffd54f]/50 py-4 px-4 shadow-md">
+        <section className="bg-gradient-to-r from-[#c2410c] via-[#ea580c] to-[#c2410c] text-white border-y border-amber-300/40 py-3 sm:py-3.5 px-4 shadow-md relative z-20">
           <div className="container-wide flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="p-2 rounded-full bg-[#fde047] text-stone-950 shrink-0 font-bold shadow-sm">
+              <span className="p-2 rounded-full bg-white/20 border border-white/30 text-white shrink-0 backdrop-blur-sm shadow-sm">
                 <Calendar size={18} />
               </span>
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-[#fef08a] block">
+                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-amber-100 block">
                   {language === "en" ? "Upcoming Sacred Festival" : language === "kn" ? "ಮುಂಬರುವ ಪವಿತ್ರ ಜಾತ್ರಾ ಮಹೋತ್ಸವ" : "आगामी पावन जात्रा महोत्सव"}
                 </span>
-                <strong className="text-sm sm:text-base font-serif text-white">
+                <strong className="text-sm sm:text-base font-serif font-bold text-white tracking-wide">
                   {language === "en" ? festivals[0].titleEn : language === "kn" ? festivals[0].titleKn : festivals[0].titleHi}
                 </strong>
-                <span className="text-xs text-amber-100 ml-2 hidden sm:inline">
+                <span className="text-xs text-amber-100/90 font-medium ml-2 hidden sm:inline">
                   — {festivals[0].dateString}
                 </span>
               </div>
@@ -249,7 +249,7 @@ export default function Home() {
 
             <Link
               to="/poojas"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#ffd54f] bg-black/25 hover:bg-[#ffd54f] hover:text-stone-950 text-white text-xs font-semibold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-stone-900 hover:bg-amber-100 hover:text-stone-950 text-xs font-bold transition-all shadow-sm hover:shadow-md hover:scale-105 shrink-0"
             >
               {language === "en" ? "Special Pooja Seva" : language === "kn" ? "ವಿಶೇಷ ಪೂಜಾ ಸೇವೆ" : "विशेष पूजा सेवा"}
               <ArrowRight size={13} />
