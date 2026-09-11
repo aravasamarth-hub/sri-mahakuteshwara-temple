@@ -45,8 +45,8 @@ function TempleProvider({ children }: PropsWithChildren) {
     return saved === "kn" || saved === "hi" || saved === "en" ? saved : "en";
   });
   const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem("mahakuta_theme");
-    return saved === "night" || saved === "day" ? saved : "day";
+    const saved = localStorage.getItem("mahakuta_theme_v2");
+    return saved === "night" || saved === "day" ? saved : "night";
   });
   const [audioOn, setAudioOn] = useState(() => {
     return localStorage.getItem("mahakuta_audio_on") === "true";
@@ -97,7 +97,7 @@ function TempleProvider({ children }: PropsWithChildren) {
   const handleToggleTheme = () => {
     setTheme((current) => {
       const next = current === "day" ? "night" : "day";
-      localStorage.setItem("mahakuta_theme", next);
+      localStorage.setItem("mahakuta_theme_v2", next);
       return next;
     });
   };
