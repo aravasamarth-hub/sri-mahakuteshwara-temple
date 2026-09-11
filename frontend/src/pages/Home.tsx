@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       {/* 1. Cinematic 100vh Full-Height Hero */}
-      <section className="relative h-screen min-h-[640px] w-full overflow-hidden flex items-end justify-start" data-testid="home-hero">
+      <section className="relative h-screen min-h-[640px] w-full overflow-hidden flex items-center justify-start" data-testid="home-hero">
         {/* Background Image with Slow Zoom & Parallax */}
         <motion.div
           className="absolute inset-0 w-full h-full pointer-events-none"
@@ -99,7 +99,7 @@ export default function Home() {
 
         {/* Hero Text & Actions */}
         <motion.div
-          className="container-wide relative z-10 grid items-end gap-8 pb-12 pt-28 max-sm:pb-8 lg:grid-cols-[1.2fr_0.65fr]"
+          className="container-wide relative z-10 grid items-center gap-8 pt-16 pb-6 max-sm:pt-20 max-sm:pb-8 lg:grid-cols-[1.2fr_0.65fr]"
           style={{ opacity: heroContentOpacity, y: heroContentY }}
         >
           <div data-testid="hero-copy">
