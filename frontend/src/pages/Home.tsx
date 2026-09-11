@@ -93,9 +93,9 @@ export default function Home() {
           />
         </motion.div>
 
-        {/* Soft Transparent Golden & Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none" />
-        <div className="absolute inset-0 bg-radial-[at_top_right] from-[#d4af37]/15 via-transparent to-black/60 pointer-events-none" />
+        {/* Transparent Natural Lighting Overlay - Photo remains bright, vibrant, and sunlit */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
 
         {/* Hero Text & Actions */}
         <motion.div
@@ -107,7 +107,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-kicker flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#e5c158] font-semibold"
+              className="hero-kicker flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#ffe072] font-semibold [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]"
             >
               <span className="diya-dot" /> {copy.sacred} <span className="diya-dot" />
             </motion.div>
@@ -117,11 +117,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-title mt-2 text-white font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight drop-shadow-md"
+              className="hero-title mt-2 text-white font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight [text-shadow:0_2px_12px_rgba(0,0,0,0.85),0_4px_24px_rgba(0,0,0,0.65)]"
               data-testid="hero-title"
             >
               {copy.temple}
-              <em className="block text-2xl sm:text-4xl lg:text-5xl font-serif text-[#ffd866] not-italic mt-1">
+              <em className="block text-2xl sm:text-4xl lg:text-5xl font-serif text-[#ffd866] not-italic mt-1 [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
                 {copy.place}
               </em>
             </motion.h1>
@@ -131,7 +131,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-description mt-4 text-stone-200 text-sm sm:text-base max-w-xl leading-relaxed drop-shadow"
+              className="hero-description mt-4 text-stone-100 text-sm sm:text-base max-w-xl leading-relaxed [text-shadow:0_1px_8px_rgba(0,0,0,0.95),0_2px_16px_rgba(0,0,0,0.7)] font-medium"
               data-testid="hero-intro"
             >
               {copy.aboutText}
