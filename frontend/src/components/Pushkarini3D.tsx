@@ -395,7 +395,7 @@ export default function PushkariniExperience() {
           }}
         >
           <img
-            src="/images/temple/pushkarini-aerial-view.jpg"
+            src="/images/temple/pushkarini-stepwell-v2.jpg"
             alt="Authentic high-resolution photograph of Sri Kshetra Mahakuta Papavinasha Pushkarini sacred stepwell tank"
             className="w-full h-full object-cover object-center"
             loading="eager"
