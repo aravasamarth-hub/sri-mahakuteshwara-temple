@@ -206,8 +206,7 @@ export default function PushkariniExperience() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const audioGainRef = useRef<GainNode | null>(null);
+  const audioElemRef = useRef<HTMLAudioElement | null>(null);
   const filterId = useId();
 
   // Subtle Mouse Parallax (-1 to 1)
@@ -316,61 +315,32 @@ export default function PushkariniExperience() {
     };
   }, []);
 
-  // Ambient Sacred Water Sound (Synthesized natural ripples via Web Audio API)
-  const toggleWaterAudio = () => {
+  // Sacred Om (ॐ) Ambient Chanting Audio
+  const toggleOmAudio = () => {
     if (isAudioPlaying) {
-      if (audioGainRef.current && audioContextRef.current) {
-        audioGainRef.current.gain.linearRampToValueAtTime(0.001, audioContextRef.current.currentTime + 0.6);
-        setTimeout(() => {
-          setIsAudioPlaying(false);
-        }, 600);
-      } else {
-        setIsAudioPlaying(false);
+      if (audioElemRef.current) {
+        audioElemRef.current.pause();
+        audioElemRef.current.currentTime = 0;
       }
+      setIsAudioPlaying(false);
       return;
     }
 
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = new AudioCtx();
-      audioContextRef.current = ctx;
-
-      // Gentle pink noise filtered for water ripple sound
-      const bufferSize = ctx.sampleRate * 2;
-      const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-      for (let i = 0; i < bufferSize; i++) {
-        const white = Math.random() * 2 - 1;
-        b0 = 0.99886 * b0 + white * 0.0555179;
-        b1 = 0.99332 * b1 + white * 0.0750759;
-        b2 = 0.96900 * b2 + white * 0.1538520;
-        b3 = 0.86650 * b3 + white * 0.3104856;
-        b4 = 0.55000 * b4 + white * 0.5329522;
-        b5 = -0.7616 * b5 - white * 0.0168980;
-        output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
-        b6 = white * 0.115926;
+      if (!audioElemRef.current) {
+        const audio = new Audio("/audio/om-chant.mp3");
+        audio.loop = true;
+        audio.volume = 0.75;
+        audioElemRef.current = audio;
       }
-
-      const whiteNoise = ctx.createBufferSource();
-      whiteNoise.buffer = noiseBuffer;
-      whiteNoise.loop = true;
-
-      const lowpass = ctx.createBiquadFilter();
-      lowpass.type = "lowpass";
-      lowpass.frequency.setValueAtTime(450, ctx.currentTime);
-
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.001, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 1.2);
-
-      whiteNoise.connect(lowpass);
-      lowpass.connect(gain);
-      gain.connect(ctx.destination);
-
-      whiteNoise.start(0);
-      audioGainRef.current = gain;
-      setIsAudioPlaying(true);
+      audioElemRef.current
+        .play()
+        .then(() => {
+          setIsAudioPlaying(true);
+        })
+        .catch(() => {
+          setIsAudioPlaying(false);
+        });
     } catch {
       setIsAudioPlaying(false);
     }
@@ -379,8 +349,8 @@ export default function PushkariniExperience() {
   // Cleanup audio on unmount
   useEffect(() => {
     return () => {
-      if (audioContextRef.current && audioContextRef.current.state !== "closed") {
-        audioContextRef.current.close().catch(() => {});
+      if (audioElemRef.current) {
+        audioElemRef.current.pause();
       }
     };
   }, []);
@@ -467,24 +437,34 @@ export default function PushkariniExperience() {
             </span>
           </div>
 
-          {/* Audio & Hint Controls */}
+          {/* Sacred Om Audio & Hint Controls */}
           <div className="flex items-center gap-2">
             <button
-              onClick={toggleWaterAudio}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#d4af37]/40 text-stone-200 hover:text-white hover:border-[#ffd700] text-xs transition-colors shadow-lg cursor-pointer"
-              aria-label={isAudioPlaying ? "Mute sacred spring water sounds" : "Play sacred spring water sounds"}
+              onClick={toggleOmAudio}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full backdrop-blur-md border text-xs transition-all shadow-lg cursor-pointer ${
+                isAudioPlaying
+                  ? "bg-amber-950/80 border-[#ffd700] text-amber-200 shadow-[0_0_15px_rgba(255,215,0,0.35)]"
+                  : "bg-black/60 border-[#d4af37]/40 text-stone-200 hover:text-white hover:border-[#ffd700]"
+              }`}
+              aria-label={isAudioPlaying ? "Mute sacred Om chant sound" : "Play sacred Om chant sound"}
               data-testid="pushkarini-audio-toggle"
-              title="Toggle ambient holy spring water sound"
+              title="Toggle sacred ॐ Om sound"
             >
               {isAudioPlaying ? (
                 <>
                   <Volume2 size={14} className="text-[#ffd700] animate-pulse" />
-                  <span className="hidden xs:inline text-[11px] font-medium">Spring Sound On</span>
+                  <span className="font-serif font-bold text-amber-300">ॐ</span>
+                  <span className="hidden xs:inline text-[11px] font-medium">
+                    {language === "en" ? "Om Sound On" : language === "kn" ? "ಓಂ ನಾದ ಆನ್" : "ॐ नाद चालू"}
+                  </span>
                 </>
               ) : (
                 <>
                   <VolumeX size={14} className="text-stone-400" />
-                  <span className="hidden xs:inline text-[11px] font-medium">Spring Sound Off</span>
+                  <span className="font-serif text-stone-400">ॐ</span>
+                  <span className="hidden xs:inline text-[11px] font-medium">
+                    {language === "en" ? "Om Sound Off" : language === "kn" ? "ಓಂ ನಾದ ಆಫ್" : "ॐ नाद बंद"}
+                  </span>
                 </>
               )}
             </button>
