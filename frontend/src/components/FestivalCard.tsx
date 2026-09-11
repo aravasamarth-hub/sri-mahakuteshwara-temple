@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Clock, Share2, Sparkles, Check, Shirt, Calendar, ArrowRight } from "lucide-react";
+import { Clock, Share2, Sparkles, Check, Shirt, Calendar, ArrowRight, Maximize2, X } from "lucide-react";
 import { useTemple } from "@/components/TempleLayout";
 import GoldenButton from "./GoldenButton";
 
@@ -32,6 +32,7 @@ interface FestivalCardProps {
 export default function FestivalCard({ festival, onBookSeva }: FestivalCardProps) {
   const { language } = useTemple();
   const [copied, setCopied] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Countdown timer state
   const [timeLeft, setTimeLeft] = useState<{
@@ -66,7 +67,8 @@ export default function FestivalCard({ festival, onBookSeva }: FestivalCardProps
     return () => clearInterval(interval);
   }, [festival.targetDate]);
 
-  const handleShare = async () => {
+  const handleShare = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     const title = language === "en" ? festival.titleEn : language === "kn" ? festival.titleKn : festival.titleHi;
     const text = `${title} at Sri Kshetra Mahakuteshwara Temple, Badami.`;
     const url = window.location.href;
@@ -88,51 +90,80 @@ export default function FestivalCard({ festival, onBookSeva }: FestivalCardProps
     language === "en" ? festival.ritualsEn : language === "kn" ? festival.ritualsKn : festival.ritualsHi;
 
   return (
-    <div className="group rounded-3xl border border-(--line) bg-(--card) overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-      {/* Festival Banner Image */}
-      <div className="relative h-64 sm:h-72 overflow-hidden">
-        <img
-          src={festival.bannerImage}
-          alt={festival.titleEn}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+    <>
+      <div className="group rounded-3xl border border-(--line) bg-(--card) overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 grid grid-cols-1 md:grid-cols-[0.88fr_1.12fr]">
+        {/* Sacred Deity Photo Column - Fully Visible & Uncropped */}
+        <div className="relative min-h-[440px] sm:min-h-[520px] md:min-h-[580px] bg-stone-950 flex items-center justify-center p-3 sm:p-4 overflow-hidden">
+          {/* Ambient blurred glow backdrop */}
+          <img
+            src={festival.bannerImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-125 pointer-events-none"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
 
-        {/* Date Badge */}
-        <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#b8860b] text-white shadow-md">
-            <Calendar size={13} />
-            {language === "en"
-              ? festival.dateBadgeEn
-              : language === "kn"
-              ? festival.dateBadgeKn
-              : festival.dateBadgeHi}
-          </span>
+          {/* Full uncropped sacred portrait photo */}
+          <img
+            src={festival.bannerImage}
+            alt={festival.titleEn}
+            onClick={() => setLightboxOpen(true)}
+            className="relative z-10 max-h-[420px] sm:max-h-[500px] md:max-h-[560px] w-auto max-w-full object-contain rounded-2xl shadow-2xl border border-white/10 transition-transform duration-500 group-hover:scale-[1.02] cursor-pointer"
+            title="Click to view full sacred darshan"
+          />
+
+          {/* Date Badge */}
+          <div className="absolute top-4 left-4 z-20">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#b8860b] text-white shadow-lg backdrop-blur-sm">
+              <Calendar size={13} />
+              {language === "en"
+                ? festival.dateBadgeEn
+                : language === "kn"
+                ? festival.dateBadgeKn
+                : festival.dateBadgeHi}
+            </span>
+          </div>
+
+          {/* Action Buttons Top Right: Fullscreen View & Share */}
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+            <button
+              onClick={() => setLightboxOpen(true)}
+              className="p-2.5 rounded-full bg-black/60 hover:bg-(--gold) text-white hover:text-stone-950 backdrop-blur-md transition-all shadow-md border border-white/15"
+              title="View Full Photo"
+            >
+              <Maximize2 size={15} />
+            </button>
+            <button
+              onClick={handleShare}
+              className="p-2.5 rounded-full bg-black/60 hover:bg-(--gold) text-white hover:text-stone-950 backdrop-blur-md transition-all shadow-md border border-white/15"
+              title="Share Festival"
+            >
+              {copied ? <Check size={15} className="text-green-400" /> : <Share2 size={15} />}
+            </button>
+          </div>
+
+          {/* Tap to View Fullscreen Hint */}
+          <button
+            onClick={() => setLightboxOpen(true)}
+            className="absolute bottom-4 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 hover:bg-(--gold) text-white hover:text-stone-950 text-[11px] font-medium backdrop-blur-md border border-white/15 transition-all shadow-md"
+          >
+            <Maximize2 size={11} />
+            <span>{language === "en" ? "Full Sacred Darshan" : language === "kn" ? "ಸಂಪೂರ್ಣ ದರ್ಶನ ವೀಕ್ಷಿಸಿ" : "संपूर्ण दर्शन देखें"}</span>
+          </button>
         </div>
 
-        {/* Share Button */}
-        <button
-          onClick={handleShare}
-          className="absolute top-4 right-4 p-2.5 rounded-full bg-black/40 hover:bg-(--gold) text-white hover:text-stone-950 backdrop-blur-md transition-all shadow-md"
-          title="Share Festival"
-        >
-          {copied ? <Check size={16} className="text-green-400" /> : <Share2 size={16} />}
-        </button>
-
-        {/* Header Title inside Banner */}
-        <div className="absolute bottom-4 left-4 right-4 text-white">
-          <span className="text-[10px] uppercase font-bold tracking-widest text-[#fbbf24] block">
-            {language === "en" ? "Sacred Utsava" : language === "kn" ? "ಪವಿತ್ರ ಉತ್ಸವ" : "पावन उत्सव"}
-          </span>
-          <h3 className="font-heading text-xl sm:text-2xl font-bold leading-tight mt-0.5">
-            {language === "en" ? festival.titleEn : language === "kn" ? festival.titleKn : festival.titleHi}
-          </h3>
-        </div>
-      </div>
-
-      {/* Content Body */}
-      <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
-        <div>
+        {/* Content Details Column */}
+        <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div>
+            {/* Header Title */}
+            <div>
+              <span className="text-[11px] uppercase font-bold tracking-widest text-(--gold) block">
+                {language === "en" ? "Sacred Utsava" : language === "kn" ? "ಪವಿತ್ರ ಉತ್ಸವ" : "पावन उत्सव"}
+              </span>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold leading-tight mt-1 text-(--text)">
+                {language === "en" ? festival.titleEn : language === "kn" ? festival.titleKn : festival.titleHi}
+              </h3>
+            </div>
           {/* Live Countdown Timer (Auto-hides if expired) */}
           {!timeLeft.expired ? (
             <div className="p-3.5 rounded-2xl border border-(--line) bg-(--surface-soft) mb-4">
@@ -234,6 +265,40 @@ export default function FestivalCard({ festival, onBookSeva }: FestivalCardProps
           )}
         </div>
       </div>
-    </div>
+      </div>
+
+      {/* Fullscreen Sacred Darshan Lightbox */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            onClick={() => setLightboxOpen(false)}
+            className="absolute top-4 right-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all z-10"
+            title="Close Darshan View"
+          >
+            <X size={24} />
+          </button>
+          <div
+            className="relative max-h-[90vh] max-w-2xl flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={festival.bannerImage}
+              alt={festival.titleEn}
+              className="max-h-[82vh] w-auto object-contain rounded-2xl shadow-2xl border border-white/15"
+            />
+            <p className="mt-3 text-center text-xs text-amber-200/90 font-medium">
+              {language === "en"
+                ? "Sri Mahakuteshwara Swamy — Sacred Utsava Darshan"
+                : language === "kn"
+                ? "ಶ್ರೀ ಮಹಾಕೂಟೇಶ್ವರ ಸ್ವಾಮಿ — ಪವಿತ್ರ ಉತ್ಸವ ದರ್ಶನ"
+                : "श्री महाकूटेश्वर स्वामी — पावन उत्सव दर्शन"}
+            </p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

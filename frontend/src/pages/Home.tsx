@@ -371,7 +371,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               <FestivalCard festival={fallbackFestivals[0]} />
             </div>
           </div>
