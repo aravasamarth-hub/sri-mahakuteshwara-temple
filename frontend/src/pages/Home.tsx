@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowDownRight, ArrowRight, Clock3, Flower2, Heart, Sparkles, Calendar, Waves, Flame } from "lucide-react";
+import { ArrowDownRight, ArrowRight, Clock3, Flower2, Heart, Sparkles, Calendar, Waves, Flame, MapPin, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import { templeImages } from "@/lib/temple";
@@ -155,25 +155,56 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Darshan Timings Rail Card (Updated live from backend) */}
+          {/* Darshan Timings & Sacred Location Hero Rails */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-rail"
-            data-testid="hero-darshan-card"
+            className="hero-rail-stack flex flex-col gap-3.5 self-center lg:self-end"
           >
-            <div className="hero-rail-number">01</div>
-            <div>
-              <span className="eyebrow light">{copy.liveDarshan}</span>
-              <h2>
-                {copy.morning}
-                <br />
-                {timings ? timings.morningDarshan : `${copy.from} — ${copy.to}`}
-              </h2>
-              <p>
-                {timings ? `Evening: ${timings.eveningDarshan}` : copy.tagline}
-              </p>
+            {/* 01 Darshan Timings Rail Card (Updated live from backend) */}
+            <div className="hero-rail" data-testid="hero-darshan-card">
+              <div className="hero-rail-number">01</div>
+              <div>
+                <span className="eyebrow light">{copy.liveDarshan}</span>
+                <h2>
+                  {copy.morning}
+                  <br />
+                  {timings ? timings.morningDarshan : `${copy.from} — ${copy.to}`}
+                </h2>
+                <p>
+                  {timings ? `Evening: ${timings.eveningDarshan}` : copy.tagline}
+                </p>
+              </div>
+            </div>
+
+            {/* 02 Sacred Location / Address Card */}
+            <div className="hero-rail hero-rail-location group" data-testid="hero-location-card">
+              <div className="hero-rail-number">02</div>
+              <div>
+                <span className="eyebrow light flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/15 text-[#fbbf24]">
+                    <MapPin size={10} />
+                  </span>
+                  {language === "en" ? "Address" : language === "kn" ? "ವಿಳಾಸ" : "पता"}
+                </span>
+                <h2>
+                  {language === "en" ? "Temple Road, Badami" : language === "kn" ? "ದೇವಾಲಯ ರಸ್ತೆ, ಬಾದಾಮಿ" : "मंदिर मार्ग, बादामी"}
+                </h2>
+                <p className="flex items-center gap-1.5 flex-wrap">
+                  <span>{language === "kn" ? "ಕರ್ನಾಟಕ 587201" : language === "hi" ? "कर्नाटक 587201" : "Karnataka 587201"}</span>
+                  <span className="text-[#fbbf24]/60">•</span>
+                  <a
+                    href="https://maps.google.com/?q=Sri+Mahakuteshwara+Temple+Badami"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-0.5 text-[#fbbf24] hover:text-[#fde68a] transition-colors font-medium underline underline-offset-2"
+                  >
+                    <span>{language === "en" ? "Directions" : language === "kn" ? "ದಾರಿ" : "दिशा"}</span>
+                    <ArrowUpRight size={11} />
+                  </a>
+                </p>
+              </div>
             </div>
           </motion.div>
         </motion.div>
