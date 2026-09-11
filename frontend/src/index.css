@@ -19,6 +19,13 @@
   --color-primary-foreground: #fffdf7;
   --color-card: var(--card);
   --color-card-foreground: var(--text);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-maroon: var(--maroon);
+  --color-surface: var(--surface);
+  --color-sand: var(--sand);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
   --radius-lg: 1rem;
 }
 

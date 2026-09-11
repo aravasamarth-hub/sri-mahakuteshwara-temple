@@ -3,10 +3,12 @@ import { ArrowRight, Building2, Check, Droplets, Home, Moon, ShowerHead, Sparkle
 import { roomImages } from "@/lib/temple";
 import { useTemple } from "@/components/TempleLayout";
 import InquiryDialog from "@/components/InquiryDialog";
+import RoomCalendar from "@/components/RoomCalendar";
 
 export default function Rooms() {
   const { copy, language } = useTemple();
   const [open, setOpen] = useState(false);
+  const [selectedDates, setSelectedDates] = useState<{ checkIn: string; rooms: number; guests: number } | null>(null);
   const [activePhoto, setActivePhoto] = useState<string>(roomImages.pravasiNilayaWide);
 
   const roomPhotos = [
@@ -196,6 +198,16 @@ export default function Rooms() {
             </div>
           </div>
         </div>
+
+        {/* Live Room Availability Calendar */}
+        <div className="container-wide mt-12">
+          <RoomCalendar
+            onSelectBooking={({ checkIn, rooms, guests }) => {
+              setSelectedDates({ checkIn, rooms, guests });
+              setOpen(true);
+            }}
+          />
+        </div>
       </section>
 
       {open && (
@@ -203,7 +215,13 @@ export default function Rooms() {
           kind="room"
           itemTitle={language === "en" ? "Sri Mahakuteshwara Pravasi Nilaya" : copy.enquireRoom}
           itemSubtitle={copy.roomsIntro}
-          onClose={() => setOpen(false)}
+          initialDate={selectedDates?.checkIn}
+          initialRooms={selectedDates?.rooms}
+          initialGuests={selectedDates?.guests}
+          onClose={() => {
+            setOpen(false);
+            setSelectedDates(null);
+          }}
         />
       )}
     </div>
