@@ -362,7 +362,7 @@ function TempleFooter() {
               <small>{copy.place}</small>
             </span>
           </div>
-          <p className="mt-4 max-w-sm text-sm leading-7 text-(--muted)">{copy.footerLine}</p>
+          <p className="mt-4 max-w-sm text-sm leading-7 text-amber-100/90">{copy.footerLine}</p>
         </div>
         <div data-testid="footer-quick-links">
           <p className="eyebrow mb-4">{language === "en" ? "Quick links" : language === "kn" ? "ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು" : "त्वरित लिंक"}</p>
@@ -381,7 +381,7 @@ function TempleFooter() {
         </div>
         <div data-testid="footer-connect">
           <p className="eyebrow mb-4">{language === "en" ? "Connect with us" : language === "kn" ? "ನಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ" : "संपर्क सूत्र"}</p>
-          <p className="text-sm leading-7 text-(--muted)">
+          <p className="text-sm leading-7 text-amber-100/90">
             {copy.phone}
             <br />
             {copy.email}
@@ -400,7 +400,7 @@ function TempleFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <div className="container-wide flex flex-col justify-between gap-2 py-4 text-xs text-(--muted) sm:flex-row">
+        <div className="container-wide flex flex-col justify-between gap-2 py-4 text-xs text-amber-200/85 sm:flex-row">
           <span data-testid="footer-copyright">
             © {new Date().getFullYear()} {copy.temple}, {copy.place}
           </span>
