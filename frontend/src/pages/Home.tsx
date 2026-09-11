@@ -86,7 +86,7 @@ export default function Home() {
           style={{ scale: heroZoom, y: heroBgTranslate }}
         >
           <img
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[46.3%_center] sm:object-[center_18%]"
             src={templeImages.hero}
             alt="Mahakuta Temple Dakshina Kashi entrance arch in Badami"
             data-testid="hero-temple-image"

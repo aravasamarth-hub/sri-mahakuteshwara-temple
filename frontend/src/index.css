@@ -90,6 +90,8 @@
 .hero-section { position: relative; height: 100vh; min-height: 100vh; color: #fffdf7; border: none; clip-path: inset(0); }
 .hero-image, .hero-overlay { position: fixed; inset: 0; width: 100%; height: 100vh; pointer-events: none; }
 .hero-image { object-fit: cover; object-position: center 0%; z-index: 0; }
+[data-testid="hero-temple-image"] { object-fit: cover; object-position: 46.3% center !important; }
+@media (min-width: 640px) { [data-testid="hero-temple-image"] { object-position: center 18% !important; } }
 .hero-overlay { z-index: 1; background: linear-gradient(180deg, rgba(20, 12, 6, 0.05) 0%, rgba(20, 12, 6, 0.02) 28%, rgba(20, 12, 6, 0.48) 65%, rgba(20, 12, 6, 0.82) 100%), linear-gradient(90deg, rgba(20, 12, 6, 0.42) 0%, rgba(20, 12, 6, 0.06) 60%); }
 .hero-grain { display: none !important; }
 .hero-kicker { display: flex; align-items: center; gap: .65rem; color: #fbd38d; font-family: "Cinzel", "Lora Variable", "Noto Sans Kannada", "Noto Sans Devanagari", serif; font-size: .75rem; letter-spacing: normal; text-transform: uppercase; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85); }
