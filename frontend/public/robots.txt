@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://mahakaleshwar-badami.org/sitemap.xml
+Sitemap: https://mahakuteshwara-badami.org/sitemap.xml

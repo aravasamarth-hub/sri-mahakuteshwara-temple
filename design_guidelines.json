@@ -1,5 +1,5 @@
 {
-  "project_title": "Mahakaleshwar Temple, Badami - Devotional Web Platform",
+  "project_title": "Sri Mahakuteshwara Temple, Badami - Devotional Web Platform",
   "app_type": "hybrid_fullstack",
   "archetype": "ORGANIC & EARTHY / SOUTH INDIAN TRADITIONAL TEMPLE HERITAGE",
   "theme": {
@@ -76,8 +76,8 @@
           "id": "rudra-abisheka",
           "kannada": "ರುದ್ರಾಭಿಷೇಕ",
           "english": "Rudra Abisheka",
-          "description_en": "Sacred bathing ceremony of Lord Mahakaleshwar Lingam with sacred waters, milk, honey, and chanting of Sri Rudram.",
-          "description_kn": "ಶ್ರೀ ರುದ್ರಂ ಮಂತ್ರಗಳೊಂದಿಗೆ ಮಹಾಕಾಳೇಶ್ವರ ಲಿಂಗಕ್ಕೆ ಹಾಲು, ಜೇನುತುಪ್ಪ ಮತ್ತು ತೀರ್ಥದಿಂದ ನೆರವೇರಿಸುವ ಪವಿತ್ರ ಅಭಿಷೇಕ."
+          "description_en": "Sacred bathing ceremony of Lord Mahakuteshwara Lingam with sacred waters, milk, honey, and chanting of Sri Rudram.",
+          "description_kn": "ಶ್ರೀ ರುದ್ರಂ ಮಂತ್ರಗಳೊಂದಿಗೆ ಮಹಾಕೂಟೇಶ್ವರ ಲಿಂಗಕ್ಕೆ ಹಾಲು, ಜೇನುತುಪ್ಪ ಮತ್ತು ತೀರ್ಥದಿಂದ ನೆರವೇರಿಸುವ ಪವಿತ್ರ ಅಭಿಷೇಕ."
         },
         {
           "id": "ekadasha-rudrabisheka",
@@ -129,8 +129,8 @@
           "id": "trust-donation",
           "name_en": "Trust Donation",
           "name_kn": "ಟ್ರಸ್ಟ್ ದೇಣಿಗೆ",
-          "desc_en": "General charitable donation to Sri Mahakaleshwar Temple Religious & Charitable Trust.",
-          "desc_kn": "ಶ್ರೀ ಮಹಾಕಾಳೇಶ್ವರ ಧಾರ್ಮಿಕ ಮತ್ತು ದತ್ತಿ ಟ್ರಸ್ಟ್‌ನ ಸಾಮಾನ್ಯ ಧಾರ್ಮಿಕ ಚಟುವಟಿಕೆಗಳಿಗೆ ನಿಧಿ."
+          "desc_en": "General charitable donation to Sri Mahakuteshwara Temple Religious & Charitable Trust.",
+          "desc_kn": "ಶ್ರೀ ಮಹಾಕೂಟೇಶ್ವರ ಧಾರ್ಮಿಕ ಮತ್ತು ದತ್ತಿ ಟ್ರಸ್ಟ್‌ನ ಸಾಮಾನ್ಯ ಧಾರ್ಮಿಕ ಚಟುವಟಿಕೆಗಳಿಗೆ ನಿಧಿ."
         }
       ]
     },

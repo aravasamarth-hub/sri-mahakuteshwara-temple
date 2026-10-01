@@ -249,20 +249,20 @@ export default function Home() {
 
       {/* 2. Active Festival Announcement Banner */}
       {festivals.length > 0 && festivals[0].isActive && (
-        <section className="bg-gradient-to-r from-[#c2410c] via-[#ea580c] to-[#c2410c] text-white border-y border-amber-300/40 py-3 sm:py-3.5 px-4 shadow-md relative z-20">
+        <section className="festival-banner text-white py-3.5 px-4 relative z-20" data-testid="festival-banner">
           <div className="container-wide flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="p-2 rounded-full bg-white/20 border border-white/30 text-white shrink-0 backdrop-blur-sm shadow-sm">
+              <span className="p-2 rounded-full bg-white/20 border border-white/35 text-white shrink-0 backdrop-blur-sm shadow-sm">
                 <Calendar size={18} />
               </span>
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-amber-100 block">
+                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#fff7ed] block [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">
                   {language === "en" ? "Upcoming Sacred Festival" : language === "kn" ? "ಮುಂಬರುವ ಪವಿತ್ರ ಜಾತ್ರಾ ಮಹೋತ್ಸವ" : "आगामी पावन जात्रा महोत्सव"}
                 </span>
-                <strong className="text-sm sm:text-base font-serif font-bold text-white tracking-wide">
+                <strong className="text-sm sm:text-base font-serif font-bold text-white tracking-wide [text-shadow:0_1px_3px_rgba(0,0,0,0.45)]">
                   {language === "en" ? festivals[0].titleEn : language === "kn" ? festivals[0].titleKn : festivals[0].titleHi}
                 </strong>
-                <span className="text-xs text-amber-100/90 font-medium ml-2 hidden sm:inline">
+                <span className="text-xs text-[#fff7ed] font-medium ml-2 hidden sm:inline [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]">
                   — {festivals[0].dateString}
                 </span>
               </div>
@@ -270,9 +270,9 @@ export default function Home() {
 
             <Link
               to="/poojas"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-stone-900 hover:bg-amber-100 hover:text-stone-950 text-xs font-bold transition-all shadow-sm hover:shadow-md hover:scale-105 shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-[#c55f03] hover:bg-[#fff7ed] hover:text-[#9e4a00] text-xs font-bold transition-all shadow-md hover:shadow-lg hover:scale-105 shrink-0"
             >
-              {language === "en" ? "Special Pooja Seva" : language === "kn" ? "ವಿಶೇಷ ಪೂಜಾ ಸೇವೆ" : "विशेष पूजा सेवा"}
+              <span>{language === "en" ? "Special Pooja Seva" : language === "kn" ? "ವಿಶೇಷ ಪೂಜಾ ಸೇವೆ" : "विशेष पूजा सेवा"}</span>
               <ArrowRight size={13} />
             </Link>
           </div>
