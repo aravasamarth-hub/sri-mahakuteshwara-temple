@@ -77,8 +77,16 @@ export default function Home() {
   const { copy, language } = useTemple();
   const [timings, setTimings] = useState<TempleTimingsData | null>(null);
   const [festivals, setFestivals] = useState<FestivalData[]>([defaultActiveFestival]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Framer Motion scroll hook for smooth cinematic slow zoom & parallax
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Framer Motion scroll hook for smooth cinematic slow zoom & parallax (desktop only)
   const { scrollY } = useScroll();
   const heroZoom = useTransform(scrollY, [0, 800], [1.0, 1.08]);
   const heroBgTranslate = useTransform(scrollY, [0, 800], [0, 100]);
@@ -103,8 +111,8 @@ export default function Home() {
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden flex items-center justify-start" data-testid="home-hero">
         {/* Background Image with Slow Zoom & Parallax */}
         <motion.div
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{ scale: heroZoom, y: heroBgTranslate }}
+          className="absolute inset-0 w-full h-full pointer-events-none will-change-transform"
+          style={isMobile ? undefined : { scale: heroZoom, y: heroBgTranslate }}
         >
           <img
             className="w-full h-full object-cover object-[46.3%_center] sm:object-[center_18%]"
@@ -121,7 +129,7 @@ export default function Home() {
         {/* Hero Text & Actions */}
         <motion.div
           className="container-wide relative z-10 grid items-center gap-10 pt-16 pb-8 max-sm:pt-20 max-sm:pb-10 lg:grid-cols-[1.25fr_0.75fr]"
-          style={{ opacity: heroContentOpacity, y: heroContentY }}
+          style={isMobile ? undefined : { opacity: heroContentOpacity, y: heroContentY }}
         >
           <div data-testid="hero-copy">
             <motion.div
@@ -235,7 +243,7 @@ export default function Home() {
         {/* Scroll Indicator */}
         <motion.div
           className="hero-scroll"
-          style={{ opacity: heroContentOpacity }}
+          style={isMobile ? undefined : { opacity: heroContentOpacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}

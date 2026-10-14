@@ -37,7 +37,39 @@
 .temple-app:not(.day) .page-title, .temple-app:not(.day) .section-title, .temple-app:not(.day) .pooja-card h3, .temple-app:not(.day) .info-card h3, .temple-app:not(.day) .hall-copy h2, .temple-app:not(.day) .schedule-top h2 { color: var(--text); }
 .temple-app:not(.day) .page-lede, .temple-app:not(.day) .section-aside, .temple-app:not(.day) .body-copy { color: var(--muted); }
 
-@layer base { * { border-color: var(--line); } html { scroll-behavior: smooth; } body { margin: 0; background: var(--background); color: var(--text); font-family: "Poppins", "Noto Sans Kannada", "Noto Sans Devanagari", sans-serif; -webkit-font-smoothing: antialiased; transition: background-color .35s ease, color .35s ease; } button, a, input, textarea { transition: color .25s ease, background-color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease; } }
+@layer base {
+  * {
+    border-color: var(--line);
+    -webkit-tap-highlight-color: transparent;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  @media (hover: none) or (pointer: coarse) {
+    html {
+      scroll-behavior: auto !important;
+    }
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: "Poppins", "Noto Sans Kannada", "Noto Sans Devanagari", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  button, a, input, textarea {
+    touch-action: manipulation;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+  }
+}
 
 .temple-app { position: relative; isolation: isolate; min-height: 100svh; overflow-x: clip; background-color: var(--background); background-image: radial-gradient(circle at 50% 12%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 32%); background-repeat: no-repeat; color: var(--text); transition: background-color .35s ease, color .35s ease; }
 /* Reusable Royal Chalukya ornament frame (vector masks): dense floral scroll flanks left/right, half-mandalas at the mid edges, lotus border along the base and an optional temple-gopuram skyline. Colour/opacity via --ornament-ink / --ornament-opacity so day, night and footer share one set. */
@@ -142,7 +174,42 @@
 
 @media (max-width: 1100px) { .pooja-grid, .donation-grid { grid-template-columns: repeat(2, 1fr); }.nav-link { padding-inline: .4rem; } }
 @media (max-width: 1024px) { .theme-btn, .audio-btn { display: none !important; } }
-@media (max-width: 760px) { :root { --orn-flank: 104px; --orn-ms: 290px; --orn-m1-pos: center 46%; --orn-m2-pos: center -9999px; --orn-lotus: 36px; --orn-sky-pos: center bottom; }.page-hero { --orn-sky: 82%; --orn-m1-pos: center -9999px; }.container-wide, .container-narrow { width: min(100% - 1.5rem, 1220px); }.temple-header .container-wide { width: 100% !important; padding-inline: .75rem !important; gap: .4rem !important; }.temple-logo { min-width: 0; gap: .45rem; flex-shrink: 1; }.temple-logo-mark { width: 42px; height: 42px; flex-shrink: 0; }.temple-logo-mark svg { width: 26px; height: 26px; }.temple-logo strong { font-size: .98rem; white-space: nowrap; }.temple-logo small { display: none !important; }.language-switch { padding: .26rem .45rem; font-size: .65rem; gap: .18rem; flex-shrink: 0; }.icon-control { width: 38px; height: 38px; }.menu-trigger { display: inline-flex !important; flex-shrink: 0 !important; border-color: var(--gold) !important; color: var(--gold) !important; background: color-mix(in srgb, var(--gold) 10%, transparent) !important; }.section-pad { padding: 4rem 0; }.section-pad::after, .page-hero::after { inset: .55rem; }.section-heading-row { display: block; }.section-aside { margin-top: 1rem; }.quick-grid, .pooja-grid, .donation-grid { grid-template-columns: 1fr; }.quick-card { min-height: 100px; }.hero-section { height: 92vh; min-height: 92vh; }.hero-title { font-size: clamp(2rem, 10.5vw, 3.2rem); line-height: 1.06; letter-spacing: -.01em; }.hero-description { font-size: .8rem; }.hero-rail { margin-bottom: 1rem; }.hero-scroll { display: none; }.page-hero { padding: 4.5rem 0 3.5rem; }.page-hero.compact { padding: 4rem 0 3.25rem; }.page-title { font-size: clamp(2.5rem, 12vw, 4rem); }.image-stack.tall img { height: 370px; }.gallery-grid { min-height: 330px; }.hall-image-wrap { height: 250px; }.schedule-card, .contact-form-wrap { padding: 1.4rem; }.audio-status { right: .7rem; bottom: .7rem; } }
+@media (max-width: 760px) {
+  :root { --orn-flank: 104px; --orn-ms: 290px; --orn-m1-pos: center 46%; --orn-m2-pos: center -9999px; --orn-lotus: 36px; --orn-sky-pos: center bottom; }
+  .page-hero { --orn-sky: 82%; --orn-m1-pos: center -9999px; }
+  .container-wide, .container-narrow { width: min(100% - 1.5rem, 1220px); }
+  .temple-header { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; transform: translateZ(0); will-change: transform; }
+  .temple-header .container-wide { width: 100% !important; padding-inline: .75rem !important; gap: .4rem !important; }
+  .temple-logo { min-width: 0; gap: .45rem; flex-shrink: 1; }
+  .temple-logo-mark { width: 42px; height: 42px; flex-shrink: 0; }
+  .temple-logo-mark svg { width: 26px; height: 26px; }
+  .temple-logo strong { font-size: .98rem; white-space: nowrap; }
+  .temple-logo small { display: none !important; }
+  .language-switch { padding: .26rem .45rem; font-size: .65rem; gap: .18rem; flex-shrink: 0; }
+  .icon-control { width: 38px; height: 38px; }
+  .menu-trigger { display: inline-flex !important; flex-shrink: 0 !important; border-color: var(--gold) !important; color: var(--gold) !important; background: color-mix(in srgb, var(--gold) 10%, transparent) !important; }
+  .section-pad { padding: 4rem 0; content-visibility: auto; contain-intrinsic-size: auto 550px; }
+  .section-pad::before { display: none !important; }
+  .section-pad::after, .page-hero::after { inset: .55rem; }
+  .section-heading-row { display: block; }
+  .section-aside { margin-top: 1rem; }
+  .quick-grid, .pooja-grid, .donation-grid { grid-template-columns: 1fr; }
+  .quick-card { min-height: 100px; }
+  .hero-section { height: 92vh; min-height: 92vh; }
+  .hero-title { font-size: clamp(2rem, 10.5vw, 3.2rem); line-height: 1.06; letter-spacing: -.01em; }
+  .hero-description { font-size: .8rem; }
+  .hero-rail { margin-bottom: 1rem; }
+  .hero-scroll { display: none; }
+  .page-hero { padding: 4.5rem 0 3.5rem; }
+  .page-hero.compact { padding: 4rem 0 3.25rem; }
+  .page-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .image-stack.tall img { height: 370px; }
+  .gallery-grid { min-height: 330px; }
+  .hall-image-wrap { height: 250px; }
+  .schedule-card, .contact-form-wrap { padding: 1.4rem; }
+  .audio-status { right: .7rem; bottom: .7rem; }
+  img { content-visibility: auto; }
+}
 @media (max-width: 480px) { .temple-logo-mark { width: 36px; height: 36px; } .temple-logo-mark svg { width: 20px; height: 20px; } .temple-logo strong { font-size: .88rem; } .language-switch { padding: .2rem .35rem; font-size: .6rem; gap: .12rem; } .language-switch button { padding: .06rem .15rem; font-size: .6rem; } .icon-control { width: 34px; height: 34px; } }
 
 /* Indic script protection for Kannada and Hindi */

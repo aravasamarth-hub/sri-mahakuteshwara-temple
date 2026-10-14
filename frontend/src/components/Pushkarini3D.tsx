@@ -204,14 +204,38 @@ export default function PushkariniExperience() {
   const [hoveredHotspot, setHoveredHotspot] = useState<PushkariniHotspot | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioElemRef = useRef<HTMLAudioElement | null>(null);
   const filterId = useId();
 
-  // Subtle Mouse Parallax (-1 to 1)
+  // Detect mobile device to disable heavy continuous GPU shaders during scroll
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Pause canvas and animation when out of viewport to preserve mobile 60fps/120fps scrolling
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "100px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Subtle Mouse Parallax (-1 to 1) - desktop only
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -241,8 +265,9 @@ export default function PushkariniExperience() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedHotspot]);
 
-  // Floating Dust Particles in Sunlight Canvas
+  // Floating Dust Particles in Sunlight Canvas (runs only when in viewport and on desktop)
   useEffect(() => {
+    if (!isInView || isMobile) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -363,27 +388,29 @@ export default function PushkariniExperience() {
       onMouseLeave={handleMouseLeave}
       data-testid="interactive-pushkarini-container"
     >
-      {/* SVG Water Ripple & Caustic Filter Definition */}
-      <svg className="sr-only" aria-hidden="true">
-        <defs>
-          <filter id={`water-ripple-${filterId}`} x="0%" y="0%" width="100%" height="100%">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.015 0.035"
-              numOctaves="3"
-              result="turbulence"
-            >
-              <animate
-                attributeName="baseFrequency"
-                dur="16s"
-                values="0.012 0.030; 0.018 0.045; 0.012 0.030"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="4" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
-      </svg>
+      {/* SVG Water Ripple & Caustic Filter Definition - desktop only */}
+      {!isMobile && (
+        <svg className="sr-only" aria-hidden="true">
+          <defs>
+            <filter id={`water-ripple-${filterId}`} x="0%" y="0%" width="100%" height="100%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.015 0.035"
+                numOctaves="3"
+                result="turbulence"
+              >
+                <animate
+                  attributeName="baseFrequency"
+                  dur="16s"
+                  values="0.012 0.030; 0.018 0.045; 0.012 0.030"
+                  repeatCount="indefinite"
+                />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="4" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+        </svg>
+      )}
 
       {/* Main Photographic Stage (16:9 Aspect Ratio on Desktop) */}
       <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9] w-full overflow-hidden bg-stone-950">
@@ -391,22 +418,27 @@ export default function PushkariniExperience() {
         <div
           className="absolute inset-[-4%] w-[108%] h-[108%] transition-transform duration-700 ease-out pointer-events-none"
           style={{
-            transform: `translate3d(${mousePos.x * -10}px, ${mousePos.y * -8}px, 0) scale(1.04)`,
+            transform: isMobile
+              ? undefined
+              : `translate3d(${mousePos.x * -10}px, ${mousePos.y * -8}px, 0) scale(1.04)`,
           }}
         >
           <img
             src="/images/temple/pushkarini-stepwell-v2.jpg"
             alt="Authentic high-resolution photograph of Sri Kshetra Mahakuta Papavinasha Pushkarini sacred stepwell tank"
             className="w-full h-full object-cover object-center"
-            loading="eager"
+            loading="lazy"
+            decoding="async"
             data-testid="pushkarini-hero-photo"
           />
 
-          {/* Gentle Water Ripple Shader Effect (Targeted to the sacred water area) */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-[62%] pointer-events-none opacity-40 mix-blend-overlay transition-opacity"
-            style={{ filter: `url(#water-ripple-${filterId})` }}
-          />
+          {/* Gentle Water Ripple Shader Effect (Desktop only for smooth scrolling) */}
+          {!isMobile && (
+            <div
+              className="absolute inset-x-0 bottom-0 h-[62%] pointer-events-none opacity-40 mix-blend-overlay transition-opacity"
+              style={{ filter: `url(#water-ripple-${filterId})` }}
+            />
+          )}
 
           {/* Soft Water Specular Highlight & Morning Sunlight Glint */}
           <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-emerald-950/40 via-teal-900/10 to-transparent pointer-events-none" />
@@ -416,12 +448,14 @@ export default function PushkariniExperience() {
           <div className="absolute inset-0 bg-radial-[at_top_right] from-[#ffe58f]/25 via-transparent to-black/35 pointer-events-none" />
         </div>
 
-        {/* Floating Dust Particles Canvas Overlay */}
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-10"
-          aria-hidden="true"
-        />
+        {/* Floating Dust Particles Canvas Overlay (Desktop only when in viewport) */}
+        {!isMobile && isInView && (
+          <canvas
+            ref={canvasRef}
+            className="absolute inset-0 w-full h-full pointer-events-none z-10"
+            aria-hidden="true"
+          />
+        )}
 
         {/* Top Floating Control & Discovery Bar */}
         <div className="absolute top-3 sm:top-5 inset-x-3 sm:inset-x-6 z-20 flex items-center justify-between gap-3 pointer-events-auto">
